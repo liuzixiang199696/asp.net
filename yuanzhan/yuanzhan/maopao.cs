@@ -4,13 +4,12 @@ using System.Text;
 
 namespace yuanzhan
 {
-    class maopao
+   public class maopao : ISort
     {
-        static void Sort(int[] a)
+        void ISort.sort(int[] a)
         {
             for (int i = 0; i < a.Length - 1; i++)
             {
-
                 //内循环，冒泡排序，
                 for (int k = 0; k < a.Length - 1 - i; k++)
                 {
@@ -29,5 +28,8 @@ namespace yuanzhan
                 Console.WriteLine(a[j]);
             }
         }
+       
+
+
     }
 }
