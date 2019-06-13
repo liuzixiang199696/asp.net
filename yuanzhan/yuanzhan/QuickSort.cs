@@ -4,16 +4,26 @@ using System.Text;
 
 namespace yuanzhan
 {
-    public class Sort
+    interface ISort
     {
-        public static void Sorting(int[] myArray)
+        void sort(int[] a);
+
+    }
+    public class QuickSort : ISort
+    {
+        public void sort(int[] a)
         {
-            Sort.quickSort(myArray, 0, myArray.Length - 1);
-            for (int i = 0; i < myArray.Length; i++)
+            QuickSort.quickSort(a, 0, a.Length - 1);
+            for (int i = 0; i < a.Length; i++)
             {
-                Console.WriteLine(myArray[i]);
+                Console.WriteLine(a[i]);
             }
         }
+
+        private static void quickSort<T>(T[] a, int v1, int v2)
+        {  
+        }
+
         public static void quickSort(int[] list, int left, int right)
         {
             if (left > right)
@@ -45,7 +55,8 @@ namespace yuanzhan
             list[i] = key;
             quickSort(list, left, i - 1);
             quickSort(list, i + 1, right);
-
         }
+
+    
     }
 }

@@ -4,18 +4,17 @@ namespace yuanzhan
 {
     class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
-            int[] a = { 1, 5, 8, 6, 4, 77 };
-            ISort s = new maopao();
-            s.sort(a);
+            ////Action<int, int> calculate = (x, y) =>
+            ////{ Console.WriteLine($"hello,{x}+{y}"); };
+            ////Func<int, int, int> lzx = (int x, int y) => { return x + y; };
+            //Person<Major> P = new Person<Major>();
+            //P = new Teacher<Major>();
         }
+
     }
-    interface ISort
-    {
-        void sort(int[] a);
-        
-    }
+
 
     interface Ischool
     {
@@ -52,8 +51,24 @@ namespace yuanzhan
         }
     }
 
+    internal class Major
+    {
+        public string name = "c#";
+    }
+    internal class sql : Major
+    {
+       // public string name = "sql";
+    }
+    internal class Person<T> where T : Major
+    {
+        public Person()
+        {
+
+        }
+    }
+    internal class Teacher<T> : Person<T> where T : Major
+    {
 
 
-
-
+    }
 }

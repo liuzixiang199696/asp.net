@@ -6,7 +6,7 @@ namespace yuanzhan
 {
     class GuessNumber
     {
-        static void Guess()
+        public  void Guess()
         {
             int max = 1000;
             int random = new Random().Next(max);

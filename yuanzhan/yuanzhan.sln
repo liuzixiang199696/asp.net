@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yuanzhan", "yuanzhan\yuanzhan.csproj", "{56C3F7AC-55D1-45FC-9D68-BCF40755EBE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yuanzhan", "yuanzhan\yuanzhan.csproj", "{56C3F7AC-55D1-45FC-9D68-BCF40755EBE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerificationCode", "VerificationCode\VerificationCode.csproj", "{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{56C3F7AC-55D1-45FC-9D68-BCF40755EBE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56C3F7AC-55D1-45FC-9D68-BCF40755EBE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56C3F7AC-55D1-45FC-9D68-BCF40755EBE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
