@@ -4,15 +4,17 @@ namespace yuanzhan
 {
     class Program
     {
-         static void Main(string[] args)
+        static void Main(string[] args)
         {
             ////Action<int, int> calculate = (x, y) =>
             ////{ Console.WriteLine($"hello,{x}+{y}"); };
             ////Func<int, int, int> lzx = (int x, int y) => { return x + y; };
             //Person<Major> P = new Person<Major>();
             //P = new Teacher<Major>();
-        }
+            
 
+        }
+        
     }
 
 
@@ -57,7 +59,7 @@ namespace yuanzhan
     }
     internal class sql : Major
     {
-       // public string name = "sql";
+        // public string name = "sql";
     }
     internal class Person<T> where T : Major
     {
