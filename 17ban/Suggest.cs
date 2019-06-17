@@ -4,7 +4,7 @@ using System.Text;
 
 namespace assignment._17ban
 {
-    class Suggest : Common//建议
+    class Suggest : Common
     {
         public Suggest(User author, string title, string body, DateTime date) : base(author, title, body, date)
         {

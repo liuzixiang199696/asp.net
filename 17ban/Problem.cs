@@ -4,7 +4,7 @@ using System.Text;
 
 namespace assignment._17ban
 {
-    class Problem : Common//求助
+    class Problem : Common
     {
         public int Reward { get; set; }
         public Problem(User author, string title, string body, DateTime date) : base(author, title, body, date)

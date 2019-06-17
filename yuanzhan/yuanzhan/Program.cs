@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace yuanzhan
 {
@@ -11,10 +12,14 @@ namespace yuanzhan
             ////Func<int, int, int> lzx = (int x, int y) => { return x + y; };
             //Person<Major> P = new Person<Major>();
             //P = new Teacher<Major>();
-            
+            people people = new people();
+            foreach (var item in people)
+            {
+
+            }
 
         }
-        
+
     }
 
 
@@ -30,24 +35,21 @@ namespace yuanzhan
         void rest();
     }
 
-    class people : Ischool, Ilibrary
+    public class people :IEnumerable, IEnumerator
     {
-        void Ischool.learn()
+        public object Current => throw new NotImplementedException();
+
+        public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
         }
 
-        void Ilibrary.learn()
+        public bool MoveNext()
         {
             throw new NotImplementedException();
         }
 
-        void Ischool.rest()
-        {
-            throw new NotImplementedException();
-        }
-
-        void Ilibrary.rest()
+        public void Reset()
         {
             throw new NotImplementedException();
         }
