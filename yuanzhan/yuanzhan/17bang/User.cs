@@ -7,6 +7,7 @@ namespace assignment._17ban
 {
     class User //用户
     {
+        internal int Id { get; }
         internal string Name { get; }
         private string Password { get; set; }
         internal IList<Article> Articles { get; set; }

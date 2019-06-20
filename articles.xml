@@ -7,7 +7,32 @@
     <body>什么是XML（EXtensible Markup Language）是一种文本文件格式被设计用来传输和存储数据由：标签和属性组成元素（节点），由元素组成“树状结构”必须有而且只能有一个根节点其他：</body>
     <authorId>1</authorId>
     <publishDate>2019/6/18 18:15</publishDate>
-    <comments />
+    <comments>
+      <comment recommend="true">
+        <id>12</id>
+        <body>不错，赞！</body>
+        <authorId>2</authorId>
+      </comment>
+    </comments>
+  </article>
+  <article isDraft="false">
+    <id>1</id>
+    <title>源栈培训：C#进阶-7：Linq to XML</title>
+    <body>什么是XML（EXtensible Markup Language）是一种文本文件格式被设计用来传输和存储数据由：标签和属性组成元素（节点），由元素组成“树状结构”必须有而且只能有一个根节点其他：</body>
+    <authorId>1</authorId>
+    <publishDate>2019/6/18 18:15</publishDate>
+    <comments>
+      <comment recommend="true">
+        <id>12</id>
+        <body>不错，赞！</body>
+        <authorId>2</authorId>
+      </comment>
+      <comment recommend="true">
+        <id>12</id>
+        <body>不错，赞！</body>
+        <authorId>2</authorId>
+      </comment>
+    </comments>
   </article>
   <article isDraft="false">
     <id>2</id>
