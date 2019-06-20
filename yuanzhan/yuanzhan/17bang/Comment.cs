@@ -13,7 +13,7 @@ namespace assignment._17ban
         public Comment(Article article)
         {
             _article = article;
-            Publish.article.comment.Add(this);
+           //ublish.article.comment.Add(this);
             
         }
         void IPublish.Publish()
