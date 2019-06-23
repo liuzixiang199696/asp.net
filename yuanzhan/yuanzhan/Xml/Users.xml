@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User1>
+    <id>1</id>
+    <name>feige</name>
+    <password>123456</password>
+  </User1>
+  <User2>
+    <id>2</id>
+    <name>laocheng</name>
+    <password>1234567</password>
+  </User2>
+  <User3>
+    <id>12</id>
+    <name>zixiang</name>
+    <password>12345678</password>
+  </User3>
+</Users>
