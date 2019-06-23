@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.CodeDom;
 using System.IO;
 using System.Xml.Linq;
+using System.Threading;
 
 namespace VerificationCode
 {
@@ -19,7 +20,8 @@ namespace VerificationCode
         static void Main(string[] args)
         {
             Captcha.Call();
-            
+           
+
         }
         
     }

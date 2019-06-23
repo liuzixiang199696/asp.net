@@ -13,9 +13,8 @@ namespace yuanzhan
     {
         static void Main(string[] args)
         {
-            Article.articles();
-            SELECT.MostUserComments();
-
+          var  a =   new GuessNumber();
+            a.Guess();
 
         }
 

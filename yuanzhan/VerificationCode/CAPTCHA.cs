@@ -11,52 +11,59 @@ using System.Diagnostics;
 using System.CodeDom;
 using System.IO;
 using System.Xml.Linq;
+using System.Threading;
 
 namespace VerificationCode
 {
     class Captcha
     {
-        static Bitmap GenerateCanvas()//生成画布
+
+       static Func<Bitmap> GenerateCanvas = () =>//生成画布
         {
             Random random = new Random();
             Bitmap image = new Bitmap(200, 100);
             Graphics g = Graphics.FromImage(image);
             g.Clear(Color.FromArgb(random.Next()));
             return image;
-        }
-        static Bitmap NoiseLine()//绘画噪音线
+        };
+        static Func<Bitmap> AddNoiseLine = () =>//绘画噪音线
         {
-            Bitmap image2 = GenerateCanvas();
+            Task<Bitmap> image2 = Task.Run(GenerateCanvas);
             Random random = new Random();//随机生成器
             for (int i = 0; i < 20; i++)
             {
-                int x1 = random.Next(image2.Width);
-                int y1 = random.Next(image2.Height);
-                int x2 = random.Next(image2.Width);
-                int y2 = random.Next(image2.Height);
-                Graphics g = Graphics.FromImage(image2);
+                int x1 = random.Next(image2.Result.Width);
+                int y1 = random.Next(image2.Result.Height);
+                int x2 = random.Next(image2.Result.Width);
+                int y2 = random.Next(image2.Result.Height);
+                Graphics g = Graphics.FromImage(image2.Result);
                 g.DrawLine(new Pen(Color.FromArgb(random.Next())), x1, y1, x2, y2);
             }
-            return image2;
-        }
-        static Bitmap NoisePoint()// 绘画噪音点
+            Console.WriteLine($"Task-{Task.CurrentId}" +
+                     $"ThreadId:{Thread.CurrentThread.ManagedThreadId}");
+            return image2.Result;
+        };
+        static Func<Bitmap> AddNoisePoint = () =>// 绘画噪音点
         {
 
-            Bitmap image3 = NoiseLine();
+            Task<Bitmap> image3 = Task.Run(AddNoiseLine);
             Random random = new Random();//随机生成器
             for (int i = 0; i < 150; i++)
             {
-                int x = random.Next(image3.Width);
-                int y = random.Next(image3.Height);
-                image3.SetPixel(x, y, Color.FromArgb(random.Next()));
+                int x = random.Next(image3.Result.Width);
+                int y = random.Next(image3.Result.Height);
+                image3.Result.SetPixel(x, y, Color.FromArgb(random.Next()));
             }
-            return image3;
-        }
+            Console.WriteLine($"Task-{Task.CurrentId}" +
+                    $"ThreadId:{Thread.CurrentThread.ManagedThreadId}");
+            return image3.Result;
+        };
+       
         static Bitmap GenerateFerificationCode()//生成验证码
         {
             try
             {
-                Bitmap image4 = NoisePoint();
+                Task<Bitmap> image4 = Task.Run(AddNoisePoint);
                 Random random = new Random();//随机生成器
                 string[] str = new string[4];//定义验证码长度
                 string serverCode = "";//装验证码
@@ -80,9 +87,11 @@ namespace VerificationCode
                 {
                     serverCode += s;
                 }
-                Graphics g = Graphics.FromImage(image4);
+                Graphics g = Graphics.FromImage(image4.Result);
                 g.DrawString(serverCode, new Font("黑体", 30), new SolidBrush(Color.FromArgb(random.Next())), new PointF(40, 30));
-                return image4;
+                Console.WriteLine($"Task-{Task.CurrentId}"+
+                    $"ThreadId:{Thread.CurrentThread.ManagedThreadId}");
+                return image4.Result;
             }
             catch (Exception e)
             {
@@ -96,7 +105,11 @@ namespace VerificationCode
         {
             try
             {
-                GenerateFerificationCode().Save(@"G:\\xiangmu\hello.jpg", ImageFormat.Jpeg);
+                Action action = () =>
+                {
+                    GenerateFerificationCode().Save(@"G:\\xiangmu\hello.jpg", ImageFormat.Jpeg);
+                };
+                Task t1 = Task.Run(action);
                 Process.Start(@"G:\\xiangmu\hello.jpg");
             }
             catch (Exception e)

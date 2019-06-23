@@ -33,7 +33,7 @@ namespace yuanzhan
                     Console.WriteLine("您猜中了！");
                     break;
                 }
-                Console.WriteLine("正确数字是" + random);
+                //Console.WriteLine("正确数字是" + random);
             }
         }
     }
