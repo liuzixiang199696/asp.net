@@ -13,7 +13,11 @@ namespace yuanzhan
     {
         static void Main(string[] args)
         {
-            User.users();
+
+                IO.SaveInGroup();
+            
+           
+ 
 
         }
 
