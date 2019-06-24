@@ -18,7 +18,7 @@ namespace assignment._17ban
         }
         void IPublish.Publish()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }
