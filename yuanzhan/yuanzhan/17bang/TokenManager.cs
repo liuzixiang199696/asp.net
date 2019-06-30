@@ -38,7 +38,7 @@ namespace yuanzhan._17bang
     //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     internal class TokenManagerAttribute : Attribute
     {
-        Token _tokens;
+        private Token _tokens;
         internal void Add(Token token)
         {
             _tokens = token | _tokens;
