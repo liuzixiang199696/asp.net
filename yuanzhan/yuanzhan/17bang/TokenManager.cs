@@ -36,11 +36,22 @@ namespace yuanzhan._17bang
     //可作为此前User类的属性，使用私有的Token枚举_tokens存储所具有的权限，
     //具有Add(Token)、Remove(Token)和Has(Token)方法，可以添加删除查看其权限
     //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    internal  class TokenManagerAttribute : Attribute
+    internal class TokenManagerAttribute : Attribute
     {
-    internal void Add(Token token) { }
-        internal void Remove(Token token) { }
-        internal void Has(Token token) { }
+        Token _tokens;
+        internal void Add(Token token)
+        {
+            _tokens = token | _tokens;
+        }
+        internal void Remove(Token token)
+        {
+            _tokens = token ^ _tokens;
+        }
+        internal void Has(Token token)
+        {
+            _tokens = token;
+            Console.WriteLine(_tokens);
+        }
 
     }
 }

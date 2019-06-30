@@ -11,8 +11,8 @@ namespace assignment._17ban
     {
         
         internal int Id { get; }
-        internal string Name { get; }
-        private string Password { get; set; }
+        internal string Name { get; set; }
+        private string Password { get; }
         internal IList<Article> Articles { get; set; }
         internal IList<Comment> comment { get; set; }
         internal IList<Suggest> suggest { get; set; }
