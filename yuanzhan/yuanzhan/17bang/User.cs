@@ -9,7 +9,7 @@ namespace assignment._17ban
     [TokenManager]
     class User //用户
     {
-        
+        internal enum Token { };
         internal int Id { get; }
         internal string Name { get; set; }
         private string Password { get; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using static assignment._17ban.User;
 
 namespace yuanzhan._17bang
 {
@@ -23,6 +24,7 @@ namespace yuanzhan._17bang
     它的主要作用是可以将枚举作为位域处理(P.S.C#不支持位域)。
     所谓位域是单个存储单元内相邻二进制位的集合。通过为枚举添加这个属性，
     可以改变枚举的一些行为来满足我们的需要。*/
+
     //声明一个权限（Token）枚举，用[Flags] 标记，包含值：SuperAdmin、Admin、Blogger、Newbie、Registered。
     [Flags]
     internal enum Token
