@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
+using yuanzhan._17bang;
 
 namespace assignment._17ban
 {
+    [TokenManager]
     class User //用户
     {
+        
         internal int Id { get; }
         internal string Name { get; }
         private string Password { get; set; }

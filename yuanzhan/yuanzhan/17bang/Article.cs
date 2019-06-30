@@ -4,7 +4,7 @@ using System.Text;
 
 namespace assignment._17ban
 {
-    class Article : Common //文章
+    class Article : Pubish //文章
     {
         internal List<Comment> comment { get; set; }
         internal Appraise appraise { get; set; }

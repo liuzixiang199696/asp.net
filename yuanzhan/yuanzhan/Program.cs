@@ -13,17 +13,59 @@ namespace yuanzhan
     {
         static void Main(string[] args)
         {
+            //var input = Console.ReadLine();
 
-                IO.SaveInGroup();
-            
-           
- 
+            //var type = typeof(studect);
+            //var kj = type.GetProperty("kj");
+            //var a = new studect();
+            //kj.SetValue(a, "asd", null);
+            //Console.WriteLine(a.kj);
+            //var function = type.GetMethod(input);
+            //function.Invoke(a,null);
+            //switch (input.ToLower())
+            //{
+            //    case "a": break;
+            //    case "b": break;
+            //    case "c": break;
 
+            //    default:
+            //        break;
+            //}
+
+
+        }
+        public static async void Getup()
+        {
+            Console.WriteLine($"before await-1 with thread {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"before await-2 with thread {Thread.CurrentThread.ManagedThreadId}");
+            //await 之前的代码，在主线程上运行
+
+            //await 开始异步执行，方法从这里开始返回调用者
+            await Task.Run(() =>
+            {
+                Console.WriteLine($"in await with thread {Thread.CurrentThread.ManagedThreadId}");
+            });
+
+            //直到await中内容执行完毕，才开始（但不是立即或同步的）执行await之后的代码
+            Console.WriteLine($"after await-3 with thread {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"after await-4 with thread {Thread.CurrentThread.ManagedThreadId}");
         }
 
     }
-    
-   
+
+
+    class studect
+    {
+        public void sj(int a)
+        {
+            Console.WriteLine(a);
+        }
+        public String kj { get; set; }
+        public void a() { Console.WriteLine("a"); }
+        public void b() { Console.WriteLine("b"); }
+        public void c() { Console.WriteLine("c"); }
+
+    }
     //interface Ischool
     //{
 
