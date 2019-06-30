@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace yuanzhan._17bang
@@ -35,7 +36,6 @@ namespace yuanzhan._17bang
     // 声明一个权限管理（TokenManager）类，
     //可作为此前User类的属性，使用私有的Token枚举_tokens存储所具有的权限，
     //具有Add(Token)、Remove(Token)和Has(Token)方法，可以添加删除查看其权限
-    //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     internal class TokenManagerAttribute : Attribute
     {
         private Token _tokens;
@@ -47,11 +47,43 @@ namespace yuanzhan._17bang
         {
             _tokens = token ^ _tokens;
         }
-        internal void Has(Token token)
+        internal void Has()
         {
-            _tokens = token;
             Console.WriteLine(_tokens);
         }
-
+    }
+    class GetTokenManagers
+    {
+        internal void GetTokenManagerAdd(Token _tokens)
+        {
+            Type type = Assembly.Load("yuanzhan._17bang").GetType("yuanzhan._17bang.TokenManagerAttribute");
+            MethodInfo method = type.GetMethod("Add", new Type[] { typeof(Token) });
+            object obj = Activator.CreateInstance(type);
+            object[] parameters = new object[] { _tokens };
+            Token result = (Token)method.Invoke(obj, parameters);
+        }
+        internal void GetTokenManagerRemove(Token _tokens)
+        {
+            Type type = Assembly.Load("yuanzhan._17bang").GetType("yuanzhan._17bang.TokenManagerAttribute");
+            MethodInfo method = type.GetMethod("Remove", new Type[] { typeof(Token) });
+            object obj = Activator.CreateInstance(type);
+            object[] parameters = new object[] { _tokens };
+            Token result = (Token)method.Invoke(obj, parameters);
+        }
+        internal void GetTokenManagerHas()
+        {
+            Type type = Assembly.Load("yuanzhan._17bang").GetType("yuanzhan._17bang.TokenManagerAttribute");
+            MethodInfo method = type.GetMethod("Has", new Type[] { typeof(Token) });
+            object obj = Activator.CreateInstance(type);
+            object[] parameters = new object[] { };
+            Token result = (Token)method.Invoke(obj, parameters);
+        }
+        internal void getToken()
+        {
+            Type _tokens = typeof(TokenManagerAttribute);
+            Console.WriteLine(_tokens.GetField("_tokens",
+               BindingFlags.NonPublic | BindingFlags.Instance)  
+               .GetValue(new TokenManagerAttribute()));
+        }
     }
 }
