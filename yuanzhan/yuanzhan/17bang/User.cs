@@ -6,7 +6,6 @@ using yuanzhan._17bang;
 
 namespace assignment._17ban
 {
-    [TokenManager]
     class User //用户
     {
         internal Token token { get; }
