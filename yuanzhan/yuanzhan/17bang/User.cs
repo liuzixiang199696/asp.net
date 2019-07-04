@@ -6,9 +6,10 @@ using yuanzhan._17bang;
 
 namespace assignment._17ban
 {
-    class User //用户
+   internal class User //用户
     {
-        internal Token token { get; }
+        internal IList<Token> Tokens { get; }
+        internal TokenManager Token { get; }
         internal int Id { get; }
         internal string Name { get; set; }
         private string Password { get; }
