@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yuanzhan", "yuanzhan\yuanzh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerificationCode", "VerificationCode\VerificationCode.csproj", "{9E56882F-BC8E-4593-AAF3-06213BA4C9DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet", "AspNet\AspNet.csproj", "{11518285-C364-4AB5-AEC8-B0B2C1EA51C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPage", "AspNet\RazorPage.csproj", "{11518285-C364-4AB5-AEC8-B0B2C1EA51C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

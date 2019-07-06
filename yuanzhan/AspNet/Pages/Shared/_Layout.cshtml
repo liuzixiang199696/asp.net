@@ -1,17 +1,23 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AspNet</title>
+   
 </head>
 <body>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - AspNet</p>
-        </footer>
-    </div>
-    @RenderSection("Scripts", required: false)
+    <header>一起帮·源栈欢迎您</header>
+    <section>
+        <h1 style="color:red">欢迎加入“一起帮”</h1>
+        @RenderSection("Ad", false)
+    </section>
+    <section>
+        <div style="background-color:aquamarine">
+            @RenderSection("Cd", false)
+        </div>    
+    </section>
+    @RenderBody()
+    <footer>大神小班……</footer>
+
+
+
 </body>
 </html>
