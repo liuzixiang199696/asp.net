@@ -1,6 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -24,7 +32,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-question-circle"></span> 求助</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-question-circle"></span> 督促</a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href=""><span class="fa fa-edit fa-fw"></span> 求督促</a></li>
                         <li><a href=""><span class="fa fa-gavel fa-fw"></span> 督促别人</a></li>
@@ -96,16 +104,20 @@
         </div>
     </section>
     @RenderBody()
-    <footer>
-        <a href="">关于我们</a>
-        <a href="">常见问题</a>
-        <a href="">意见建议</a>
-        <a href="">历史通知</a>
-        <a href="">友情捐赠</a>
-        <a href="">融资2018</a>
-        <p>友情链接：</p>
-        <a href="">渝ICP备18007191号（备案）</a>© 2019 - 首顾科技
-    </footer>
+<footer>
+    <div>
+        <a href="/About/Us">关于我们</a> |
+        <a href="/FAQ">常见问题</a> |
+        <a href="/Suggest">意见建议</a> |
+        <a href="/Notice">历史通知</a> |
+        <a href="/Donate" class="text-success">友情捐赠</a> |
+        <a href="/About/Fund" class="text-info">融资2018</a>
+    </div>
+    <div>
+        友情链接：
+    </div>
+    <p class="pull-right"><a href="http://www.miitbeian.gov.cn">渝ICP备18007191号（备案）</a>&copy; 2019 - 首顾科技</p>
+</footer>
 
 
 
