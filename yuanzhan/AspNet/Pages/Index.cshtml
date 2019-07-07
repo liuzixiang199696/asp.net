@@ -3,6 +3,24 @@
 @{
     @section Cd{<p>Index页面的Section</p>}
     <h1>我是Index内容页</h1>
+    @for (int i = 0; i < 5; i++)
+    {
+        for (int j = i; j < 5; j++)
+        {
+            <span>&nbsp;</span>
+        }
+        for (int z = 0; z <= 2 * i; z++)
+        {
+            if (i % 2 == 0)
+            {
+                <span style="color:blue">i</span>
+            }
+            else
+            {
+                <span style="color:red">i</span>
+            }
+        }
+        <br />
+    }
 }
-
 
