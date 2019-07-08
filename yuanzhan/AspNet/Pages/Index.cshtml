@@ -1,45 +1,38 @@
 ﻿@page
 @model IndexModel
 @{
-    @section Cd{<p>Index页面的Section</p>}
-    <h1>我是Index内容页</h1>
-    @for (int i = 0; i < 5; i++)
-    {
-        for (int j = i; j < 5; j++)
-        {
-            <span>&nbsp;</span>
-        }
-        for (int z = 0; z <= 2 * i; z++)
-        {
-            if (i % 2 == 0)
-            {
-                <span style="color:blue">i</span>
-            }
-            else
-            {
-                <span style="color:red">i</span>
-            }
-        }
-        <br />
-    }
+    @section Cd{<p>
+            <span class="glyphicon glyphicon-gift"></span><span>&nbsp;</span>很抱歉， Saber ⑥ 在2019年07月06日 12点23分左右对文章源栈培训：ASP.NET-1：Razor Page的“赞”未能成功完成。如果有必要的话，你可以重新操作。
+            <a href="/About/Us" style="float:right;"><span class="glyphicon glyphicon-hand-right"></span>全部消息</a>
+        </p>}
 
-    <table class="table table-striped" id="month">
-        <tbody>
-            <tr>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
-                <th>日</th>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-md-4 home-card">
+        <div class="lead content">
+            <img src="/images/督促.png" class="img-responsive center-block">
+            <h2 class="text-center">一对一远程协助</h2>
+            <p class="text-center"><span class="glyphicon glyphicon-globe"></span> 帮忙就要帮到底</p>
+        </div>
+        <a href="/Problem" class="main-button btn btn-primary btn-lg btn-block bottom"><span class="fa fa-question-circle"></span> 求 助</a>      
+    </div>
 
-   
-        
-           
-      
+    <div class="col-md-4 home-card">
+        <div class="lead content">
+            <img src="~/images/求助.png" class="img-responsive center-block">
+            <h2 class="text-center">一对一远程协助</h2>
+            <p class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span> 押上你的决心</p>
+        </div>
+        <a href="/Problem" class="main-button btn btn-primary btn-lg btn-block bottom"><span class="fa fa-question-circle"></span> 求 助</a>       
+    </div>
+
+    <div class="col-md-4 home-card">
+        <div class="lead content">
+            <img src="~/images/文章.png" class="img-responsive center-block">
+            <h2 class="text-center">一对一远程协助</h2>
+            <p class="text-center"><span class="glyphicon glyphicon-check"></span> 高质量内容的保证</p>
+        </div>
+        <a href="/Problem" class="main-button btn btn-primary btn-lg btn-block bottom"><span class="fa fa-question-circle"></span> 求 助</a>       
+    </div>
+
+
 }
 
