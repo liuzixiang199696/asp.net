@@ -90,3 +90,8 @@ body {
             line-height: 30px;
             list-style: none;
         }
+.col-md-4 home-card {
+    width: 500px;
+    height: 100px;
+    border: 1px solid #ddd;
+}

@@ -1,0 +1,44 @@
+﻿@page
+<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+
+@{ DateTime date = DateTime.Now;
+    int week = (int)date.DayOfWeek;
+    int year = date.Year;
+    int Month = date.Month;
+    int day = date.Day;
+    int[] Montharray = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    if (Month == 2)
+    {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+        {
+            Montharray[1] = 29;
+        }
+    }
+}
+<body>
+    <div class="calendar">
+        <h4>@date.ToString("yyyy年MM月")</h4>
+        <button class="a1" onclick="window.location.href = '/index'">上个月</button>
+        <button class="a2" onclick="window.location.href = '/index'">下个月</button>
+        <ul class="week">
+            <li>日</li>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+        </ul>
+        <ul class="dateList">
+            @for (int i = 1; i < week; i++)
+            {
+                <li></li>
+            }
+            @for (int i = 1; i <= Montharray[Month]; i++)
+            {
+                <li> @i </li>
+            }
+        </ul>
+
+    </div>
+</body>
