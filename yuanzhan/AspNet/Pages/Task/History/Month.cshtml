@@ -1,11 +1,11 @@
 ﻿@page
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 
-@{ DateTime date = new DateTime(2008,02,01);
-    int week = (int)date.DayOfWeek;
-    int year = date.Year;
-    int Month = date.Month;
-    int day = date.Day;
+@{ DateTime date = DateTime.Now;
+    var year = date.Year;
+    var Month = date.Month;
+    DateTime day = new DateTime(year, Month, 1);
+    int week = (int)day.DayOfWeek;
     int[] Montharray = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     if (Month == 2)
     {
@@ -39,6 +39,5 @@
                 <li> @i</li>
             }
         </ul>
-
     </div>
 </body>
