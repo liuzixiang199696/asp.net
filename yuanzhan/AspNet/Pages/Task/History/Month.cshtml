@@ -1,7 +1,7 @@
 ﻿@page
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 
-@{ DateTime date = DateTime.Now;
+@{ DateTime date = new DateTime(2008,02,01);
     int week = (int)date.DayOfWeek;
     int year = date.Year;
     int Month = date.Month;
@@ -30,13 +30,13 @@
             <li>六</li>
         </ul>
         <ul class="dateList">
-            @for (int i = 1; i < week; i++)
+            @for (int i = 0; i < week; i++)
             {
                 <li></li>
             }
-            @for (int i = 1; i <= Montharray[Month]; i++)
+            @for (int i = 1; i <= Montharray[Month-1]; i++)
             {
-                <li> @i </li>
+                <li> @i</li>
             }
         </ul>
 
