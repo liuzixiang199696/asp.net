@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UI    
+namespace AspNet
 {
     [HtmlTargetElement("DateTime", Attributes = "asp-showicon,asp-only")]
     public class DateTimeTagHelper : TagHelper
