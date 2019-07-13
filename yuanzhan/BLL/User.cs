@@ -10,16 +10,17 @@ namespace BLL
     {
         static User() {
 
-            _userHelper =  new UserHelper();
+            _UserHelper =  new UserHelper();
         }
-        private static UserHelper _userHelper;
+        private static UserHelper _UserHelper;
         public int Id { get; set; }
         public String Name { get; set; }
         public string Password { get; set; }
+        public IEnumerable<object> Tokens { get; internal set; }
 
         public static bool IsNameDuplicated(string name)
         {
-            return _userHelper.GetByName(name)!=null;
+            return _UserHelper.GetByName(name)!=null;
         }
         public bool IsPasswordValid()
         {
@@ -28,7 +29,7 @@ namespace BLL
 
         public static void Register(User user)
         {
-            _userHelper.Save(user.Name, user.Password);
+            _UserHelper.Save(user.Name, user.Password);
         }
 
     }
