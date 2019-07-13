@@ -36,7 +36,7 @@ namespace AspNet.Pages
 
             }
             new RegisterService().Register(Register.UserName, Register.PassWord);
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Register");
 
 
         }
