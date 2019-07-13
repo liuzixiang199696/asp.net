@@ -20,7 +20,9 @@ namespace BLL.Repoistory
 
         public User GetByName(string userName)
         {
-            return _users.Where(u => u.Name == userName).SingleOrDefault();
+            return _users==null
+                ? null: 
+                _users.Where(u => u.Name == userName).SingleOrDefault();
         }
     }
 }

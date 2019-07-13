@@ -9,6 +9,7 @@ using SRV;
 
 namespace AspNet.Pages
 {
+    [BindProperties]
     public class RegisterModel : PageModel
     {
         public Register Register { get; set; }
@@ -20,9 +21,9 @@ namespace AspNet.Pages
         }
         public IActionResult OnPost()
         {
-            //if (!BLL.User.IsNameDuplicated(UserName))
+            //if (!BLL.User.IsNameDuplicated(Register.UserName))
             //{
-            //    BLL.User.Register(new BLL.User { Name = UserName, Password = NPassword });
+            //    BLL.User.Register(new BLL.User { Name = Register.UserName, Password =Register.PassWord });
             //}
             if (!ModelState.IsValid)
             {
@@ -30,10 +31,12 @@ namespace AspNet.Pages
             }
             if (new RegisterService().HasExist(Register.UserName))
             {
+                 ModelState.AddModelError("Register.UserName", "*用户名重复!");
+                return Page();
 
             }
             new RegisterService().Register(Register.UserName, Register.PassWord);
-            return RedirectToPage("/");
+            return RedirectToPage("/Index");
 
 
         }
