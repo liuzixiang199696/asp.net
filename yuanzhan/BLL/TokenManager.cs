@@ -27,70 +27,70 @@ namespace yuanzhan._17bang
     可以改变枚举的一些行为来满足我们的需要。*/
 
     //声明一个权限（Token）枚举，用[Flags] 标记，包含值：SuperAdmin、Admin、Blogger、Newbie、Registered。
-    [Flags]
-    internal enum Token
-    {
-        SuperAdmin = 1,
-        Admin = 2,
-        Blogger = 4,
-        Newbie = 8,
-        Registered = 16,
-    }
-    // 声明一个权限管理（TokenManager）类，
+    //[Flags]
+    //internal enum Token
+    //{
+    //    SuperAdmin = 1,
+    //    Admin = 2,
+    //    Blogger = 4,
+    //    Newbie = 8,
+    //    Registered = 16,
+    //}
+    //声明一个权限管理（TokenManager）类，
     //可作为此前User类的属性，使用私有的Token枚举_tokens存储所具有的权限，
     //具有Add(Token)、Remove(Token)和Has(Token)方法，可以添加删除查看其权限
-    internal class TokenManager
-    {
-        private Token _tokens;
-        internal void Add(Token token)
-        {
-            _tokens = token | _tokens;
-        }
-        internal void Remove(Token token)
-        {
-            _tokens = token ^ _tokens;
-        }
-        internal void Has(Token _tokens, String name)
-        {
-            User user = new User();
-            foreach (var item in user.Tokens)
-            {
-                if ((Token)item == _tokens)
-                {
-                    Console.WriteLine($"用户{name}有此权限");
-                }
-                else
-                {
-                    Console.WriteLine($"用户{name}无此权限");
-                }
-            }
-        }
-    }
-    class GetTokenManagers
-    {
-        private TokenManager get()
-        {
-            Type type = typeof(TokenManager);
-            return (TokenManager)Activator.CreateInstance(type);
+    //internal class TokenManager
+    //{
+    //    private Token _tokens;
+    //    internal void Add(Token token)
+    //    {
+    //        _tokens = token | _tokens;
+    //    }
+    //    internal void Remove(Token token)
+    //    {
+    //        _tokens = token ^ _tokens;
+    //    }
+    //    internal void Has(Token _tokens, String name)
+    //    {
+    //        User user = new User();
+    //        foreach (var item in user.Tokens)
+    //        {
+    //            if ((Token)item == _tokens)
+    //            {
+    //                Console.WriteLine($"用户{name}有此权限");
+    //            }
+    //            else
+    //            {
+    //                Console.WriteLine($"用户{name}无此权限");
+    //            }
+    //        }
+    //    }
+    //}
+    //class GetTokenManagers
+    //{
+    //    private TokenManager get()
+    //    {
+    //        Type type = typeof(TokenManager);
+    //        return (TokenManager)Activator.CreateInstance(type);
 
 
-        }
-        internal void GetTokenManagerAdd(Token _tokens)
-        {
-            get().Add(_tokens);
+    //    }
+    //    internal void GetTokenManagerAdd(Token _tokens)
+    //    {
+    //        get().Add(_tokens);
 
-        }
-        internal void GetTokenManagerRemove(Token _tokens)
-        {
-            get().Remove(_tokens);
-        }
-        internal void GetTokenManagerHas(Token _tokens, String name)
-        {
-            get().Has(_tokens, name);
-        }
-        internal void getToken()
-        {
-            get();
-        }
-    }
+    //    }
+    //    internal void GetTokenManagerRemove(Token _tokens)
+    //    {
+    //        get().Remove(_tokens);
+    //    }
+    //    internal void GetTokenManagerHas(Token _tokens, String name)
+    //    {
+    //        get().Has(_tokens, name);
+    //    }
+    //    internal void getToken()
+    //    {
+    //        get();
+    //    }
+    //}
 }

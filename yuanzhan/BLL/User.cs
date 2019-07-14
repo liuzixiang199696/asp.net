@@ -16,7 +16,7 @@ namespace BLL
         public int Id { get; set; }
         public String Name { get; set; }
         public string Password { get; set; }
-        public IEnumerable<object> Tokens { get; internal set; }
+        //public IEnumerable<object> Tokens { get; internal set; }
 
         public static bool IsNameDuplicated(string name)
         {

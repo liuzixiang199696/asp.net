@@ -11,16 +11,16 @@ namespace SRV
             User user = new User
             {
                 Name = username,
-                Password = password              
+                Password = password
             };
             User.Register(user);
-            new UserRepoistory().Save(user);
+            new DBUUserRepoistory().Save(user);
 
         }
 
         public bool HasExist(string userName)
         {
-            return new UserRepoistory().GetByName(userName) != null;
+            return new DBUUserRepoistory().GetByName(userName) != null;
         }
     }
 }
