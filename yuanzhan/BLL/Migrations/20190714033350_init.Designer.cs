@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BLL.Migrations
 {
-    [DbContext(typeof(DBUUserRepoistory))]
+    [DbContext(typeof(UserRepoistory))]
     [Migration("20190714033350_init")]
     partial class init
     {

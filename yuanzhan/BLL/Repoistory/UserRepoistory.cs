@@ -6,14 +6,22 @@ using System.Text;
 
 namespace BLL.Repoistory
 {
-    public class DBUUserRepoistory: DbContext
+    public class UserRepoistory: DbContext
     {
         public DbSet<User> users { get; set; }
+        public DbSet<Email> emails { get; set; }
+
         public User Save(User user)
         {           
             users.Add(user);
             SaveChanges();
             return user;
+        }
+        public Email Save(Email email)
+        {
+            emails.Add(email);
+            SaveChanges();
+            return email;
         }
 
         public User GetByName(string userName)

@@ -14,13 +14,13 @@ namespace SRV
                 Password = password
             };
             User.Register(user);
-            new DBUUserRepoistory().Save(user);
+            new UserRepoistory().Save(user);
 
         }
 
         public bool HasExist(string userName)
         {
-            return new DBUUserRepoistory().GetByName(userName) != null;
+            return new UserRepoistory().GetByName(userName) != null;
         }
     }
 }
