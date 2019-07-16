@@ -1,6 +1,17 @@
 ﻿@page
 @model AspNet.Pages.RegisterModel
 
+@if (ViewData["valid"] != null)
+{
+    if ((bool)ViewData["valid"])
+    {
+        <span>激活成功！</span>
+    }
+    else
+    {
+        <span>激活失败</span>
+    }
+}
 <form method="post">
     <h1> 注册</h1>
     <label>用户名：</label><p><input asp-for="Register.UserName" /><span asp-validation-for="Register.UserName"></span></p>

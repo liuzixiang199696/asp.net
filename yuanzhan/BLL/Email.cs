@@ -19,6 +19,10 @@ namespace BLL
         {
 
         }
- 
+
+        public void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

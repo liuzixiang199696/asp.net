@@ -34,6 +34,12 @@ namespace BLL.Repoistory
             string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=17bang;Integrated Security=True;";
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        public void Flush()
+        {
+            throw new NotImplementedException();
+        }
+
         public Email GetEmailById(int id)
         {
             Email email = emails.Where(e => e.Id == id).SingleOrDefault();

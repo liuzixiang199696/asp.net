@@ -25,9 +25,14 @@ namespace UI.Pages.Email
         public string EmailAddress { get; set; }
         public void OnGet()
         {
-            int id = Convert.ToInt32(Request.Query[_id]);
+ 
+            string id = Request.Query[_id];
             string code = Request.Query[_code];
-            ViewData[VALID] = _userService.ValiadationEmail(id, code);
+            if (!string.IsNullOrEmpty(id)&&!string.IsNullOrEmpty(code))
+            {
+                ViewData[VALID] = _userService.ValiadationEmail(Convert.ToInt32(id), code); 
+            }
+            
         }
         public void OnPost()
         {
@@ -35,7 +40,7 @@ namespace UI.Pages.Email
             {
                 return;
             }
-            string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?{_code}={0}&{_id}={1}";
+            string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?{_code}={{0}}&{_id}={{1}}";
             _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat);
 
         }
