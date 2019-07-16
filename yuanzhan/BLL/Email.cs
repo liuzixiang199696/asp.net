@@ -15,6 +15,10 @@ namespace BLL
         {
             ValidationCode = new Random().Next().ToString();
         }
+        public void Send(string validationUrl)
+        {
+
+        }
  
     }
 }

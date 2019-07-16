@@ -11,6 +11,9 @@ namespace UI.Pages.Email
 {
     public class ValidateModel : PageModel
     {
+        private const string _id = "id";
+        private const string _code = "code";
+        public const string VALID = "reminder";
         private UserService _userService;
         public ValidateModel()
         {
@@ -22,16 +25,18 @@ namespace UI.Pages.Email
         public string EmailAddress { get; set; }
         public void OnGet()
         {
-
+            int id = Convert.ToInt32(Request.Query[_id]);
+            string code = Request.Query[_code];
+            ViewData[VALID] = _userService.ValiadationEmail(id, code);
         }
         public void OnPost()
         {
             if (!ModelState.IsValid)
             {
-                return ;
+                return;
             }
-            string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?code={0}&id={1}";
-            _userService.SendValiadationEmail(EmailAddress,ValidationUrlFormat); 
+            string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?{_code}={0}&{_id}={1}";
+            _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat);
 
         }
     }

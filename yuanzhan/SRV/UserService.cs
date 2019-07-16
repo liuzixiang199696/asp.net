@@ -21,5 +21,11 @@ namespace SRV
 
 
         }
+
+        public bool ValiadationEmail(int id, string code)
+        {
+            Email email = _userRepoistory.GetEmailById(id);
+            return email.ValidationCode==code;
+        }
     }
 }

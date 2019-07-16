@@ -11,6 +11,7 @@ namespace BLL.Repoistory
         public DbSet<User> users { get; set; }
         public DbSet<Email> emails { get; set; }
 
+
         public User Save(User user)
         {           
             users.Add(user);
@@ -32,6 +33,11 @@ namespace BLL.Repoistory
         {
             string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=17bang;Integrated Security=True;";
             optionsBuilder.UseSqlServer(connectionString);
+        }
+        public Email GetEmailById(int id)
+        {
+            Email email = emails.Where(e => e.Id == id).SingleOrDefault();
+            return email;
         }
     }
 }
