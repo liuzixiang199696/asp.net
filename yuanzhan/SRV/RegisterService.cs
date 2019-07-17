@@ -8,12 +8,12 @@ namespace SRV
     {
         public void Register(string username, string password)
         {
-            User user = new User
+            MYUser user = new MYUser
             {
                 Name = username,
                 Password = password
             };
-            User.Register(user);
+            user.Register(user);
             new UserRepoistory().Save(user);
 
         }

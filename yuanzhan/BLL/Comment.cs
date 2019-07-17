@@ -8,7 +8,7 @@ namespace assignment._17ban
     class Comment:IPublish   //评论
     {
         internal Article _article { get; }
-        internal User user { get; }
+        internal MYUser user { get; }
         internal Appraise appraise { get; set; }
         internal string content { get; set; }
         public Comment(Article article)

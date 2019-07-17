@@ -1,15 +1,25 @@
-﻿using BLL;
+﻿using BLL.Repoistory;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace assignment._17ban
+namespace BLL
 {
-    class Suggest : Pubish//建议
+    public class Suggest
     {
-        public Suggest(User author, string title, string body, DateTime date) : base(author, title, body, date)
+        static Suggest()
         {
-            //Author.suggest.Add(this);
+
+        }
+        public int Id { get; set; }
+        public string SuggestTitle { get; set; }
+        public string SuggestContent { get; set; }
+        public DateTime PublishSuggestDateTime { get; set; }
+
+        public void Publish(Suggest suggest)
+        {
+            SuggestRepoistory suggestRepoistory = new SuggestRepoistory();
+            suggestRepoistory.Save(suggest);
         }
     }
 }

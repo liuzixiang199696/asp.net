@@ -4,16 +4,14 @@ using BLL.Repoistory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BLL.Migrations
 {
-    [DbContext(typeof(UserRepoistory))]
-    [Migration("20190717043543_EMAILHASVALIDATED")]
-    partial class EMAILHASVALIDATED
+    [DbContext(typeof(SQLDBContext))]
+    partial class SQLDBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,11 +36,13 @@ namespace BLL.Migrations
                     b.ToTable("emails");
                 });
 
-            modelBuilder.Entity("BLL.User", b =>
+            modelBuilder.Entity("BLL.MYUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("InvitedById");
 
                     b.Property<string>("Name");
 
@@ -50,7 +50,33 @@ namespace BLL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InvitedById");
+
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("BLL.Suggest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("PublishSuggestDateTime");
+
+                    b.Property<string>("SuggestContent");
+
+                    b.Property<string>("SuggestTitle");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("suggests");
+                });
+
+            modelBuilder.Entity("BLL.MYUser", b =>
+                {
+                    b.HasOne("BLL.MYUser", "InvitedBy")
+                        .WithMany()
+                        .HasForeignKey("InvitedById");
                 });
 #pragma warning restore 612, 618
         }

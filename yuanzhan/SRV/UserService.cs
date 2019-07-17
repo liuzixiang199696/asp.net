@@ -38,12 +38,12 @@ namespace SRV
 
         public bool PasswordCorrect(string rpassword, string MD5PassWord)
         {
-            return  User.GetMD5Hash(rpassword) == MD5PassWord;
+            return  MYUser.GetMD5Hash(rpassword) == MD5PassWord;
         }
 
         public UserModel GetUser(string userName)
         {
-            User user = _userRepoistory.GetByName(userName);
+            MYUser user = _userRepoistory.GetByName(userName);
             if (user==null)
             {
                 return null;

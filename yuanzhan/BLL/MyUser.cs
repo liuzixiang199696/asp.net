@@ -7,9 +7,9 @@ using System.Text;
 
 namespace BLL
 {
-    public class User
+    public class MYUser
     {
-        static User()
+        static MYUser()
         {
 
             _UserHelper = new UserHelper();
@@ -19,7 +19,7 @@ namespace BLL
         public int Id { get; set; }
         public String Name { get; set; }
         public string Password { get; set; }
-        public User InvitedBy { get; set; }
+        public MYUser InvitedBy { get; set; }
 
 
         public static bool IsNameDuplicated(string name)
@@ -31,7 +31,7 @@ namespace BLL
             return Password.Length >= 4;
         }
 
-        public void Register(User user)
+        public void Register(MYUser user)
         {
             _UserHelper.Save(user.Name, user.Password);
             Password = GetMD5Hash(Password);
@@ -40,8 +40,7 @@ namespace BLL
         {
             const string _salt = "*-%zx96";
             using (MD5 md5Hash = MD5.Create())
-            {
-                Password = GetMD5Hash(Password);
+            {                
 
                 byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input + _salt));
                 StringBuilder stringBuilder = new StringBuilder();

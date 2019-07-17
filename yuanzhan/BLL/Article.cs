@@ -10,7 +10,7 @@ namespace assignment._17ban
         internal List<Comment> comment { get; set; }
         internal Appraise appraise { get; set; }
         internal List<KeyWord> keyWords { get; set; }
-        public Article(User auther, string title, string body, DateTime date)
+        public Article(MYUser auther, string title, string body, DateTime date)
             :base(auther, title, body, date)
         {
             //Author.Articles.Add(this);

@@ -6,33 +6,29 @@ using System.Text;
 
 namespace BLL.Repoistory
 {
-    public class UserRepoistory: DbContext
-    {
-        public DbSet<User> users { get; set; }
-        public DbSet<Email> emails { get; set; }
-
-
-        public User Save(User user)
+    public class UserRepoistory
+    {     
+        public SQLDBContext context;
+        public UserRepoistory()
+        {
+            context = new SQLDBContext();
+        }
+        public MYUser Save(MYUser user)
         {           
-            users.Add(user);
-            SaveChanges();
+           context.users.Add(user);
+           context.SaveChanges();
             return user;
         }
         public Email Save(Email email)
         {
-            emails.Add(email);
-            SaveChanges();
+          context.emails.Add(email);
+           context.SaveChanges();
             return email;
         }
 
-        public User GetByName(string userName)
+        public MYUser GetByName(string userName)
         {
-            return users.Where(u => u.Name == userName).SingleOrDefault();
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=17bang;Integrated Security=True;";
-            optionsBuilder.UseSqlServer(connectionString);
+            return context.users.Where(u => u.Name == userName).SingleOrDefault();
         }
 
         public void Flush()
@@ -42,8 +38,9 @@ namespace BLL.Repoistory
 
         public Email GetEmailById(int id)
         {
-            Email email = emails.Where(e => e.Id == id).SingleOrDefault();
+            Email email = context.emails.Where(e => e.Id == id).SingleOrDefault();
             return email;
         }
     }
+
 }

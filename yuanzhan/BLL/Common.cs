@@ -7,11 +7,11 @@ namespace assignment._17ban
 {
     class Pubish:IPublish
     {
-        internal User Author { get; }
+        internal MYUser Author { get; }
         internal string Title { get; }
         internal string Body { get; }
         internal DateTime _date { get; }
-        public Pubish(User author, string title, string body, DateTime date)
+        public Pubish(MYUser author, string title, string body, DateTime date)
         {
             Author = author;
             Title = title;
