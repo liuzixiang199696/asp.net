@@ -15,24 +15,71 @@ namespace SRV
         public void SendValiadationEmail(string emailAddress, string validationUrlFormat)
         {
             Email email = new Email { Address = emailAddress };
+            email.MakeValidationCode();
             _userRepoistory = new UserRepoistory();
             _userRepoistory.Save(email);
-            string validationUrl = string.Format(validationUrlFormat, email.Id, email.ValidationCode);
+
+            string validationUrl = string.Format(validationUrlFormat, email.ValidationCode, email.Id);
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("q123922261@163.com");
             mail.To.Add(emailAddress);
             mail.Subject = "一起帮注册验证";
-            mail.Body = validationUrl+"不验证，打屁股！";
+            mail.Body = validationUrl;
 
-            SmtpClient SmtpServer = new SmtpClient("smtp.163.com");
-            SmtpServer.Port = 465;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("q123922261@163.com","q199609066");
-            SmtpServer.EnableSsl = true;
+            SmtpClient SmtpServer = new SmtpClient();
+            SmtpServer.Port = 25;
+            SmtpServer.Host = "smtp.163.com";
+            SmtpServer.Credentials = new System.Net.NetworkCredential("q123922261", "q199696");
+            SmtpServer.EnableSsl = false;
 
             SmtpServer.Send(mail);
 
-
         }
+
+        public bool PasswordCorrect(string rpassword, string MD5PassWord)
+        {
+            return  User.GetMD5Hash(rpassword) == MD5PassWord;
+        }
+
+        public UserModel GetUser(string userName)
+        {
+            User user = _userRepoistory.GetByName(userName);
+            if (user==null)
+            {
+                return null;
+            }
+            else
+            {
+                UserModel userModel = new UserModel();
+                userModel.Id = user.Id;
+                userModel.MD5Password = user.Password;
+                return userModel;
+            }
+        }
+
+
+        //public UserModel Login(string userName, string passWord)
+        //{
+           
+        //    User user = _userRepoistory.GetByName(userName);
+        //    if (user == null)
+        //    {
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        UserModel userModel = new UserModel();
+        //        if (user.GetMD5Hash(passWord) == user.Password)
+        //        {
+
+        //        }
+        //        else { }
+        //        userModel.Id = user.Id;
+        //        userModel.MD5Password = user.Password;
+        //        return userModel;
+        //    }
+           
+        //}
 
         public bool ValiadationEmail(int id, string code)
         {
@@ -41,5 +88,11 @@ namespace SRV
             _userRepoistory.Flush();
             return email.ValidationCode == code;
         }
+    }
+    public class UserModel
+    {
+        public int Id { get; set; }
+        public string MD5Password { get; set; }
+
     }
 }
