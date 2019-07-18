@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using UI.Pages.Shared;
 
-namespace RazorPage.Pages
+namespace AspNet.Pages
 {
-    public class ProblemModel : PageModel
+    public class ProblemModel : _LayoutModel
     {
-        public void OnGet()
+        public override void OnGet()
         {
+            base.OnGet();
         }
     }
 }

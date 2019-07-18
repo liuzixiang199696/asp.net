@@ -10,6 +10,10 @@ namespace SRV
     public class UserService
     {
         private UserRepoistory _userRepoistory;
+        public UserService()
+        {
+            _userRepoistory = new UserRepoistory();
+        }
 
 
         public void SendValiadationEmail(string emailAddress, string validationUrlFormat)
@@ -36,9 +40,29 @@ namespace SRV
 
         }
 
+        public UserModel GetById(int id)
+        {
+          MYUser user =  _userRepoistory.GetById(id);
+            if (user==null)
+            {
+                return null;
+            }
+            else
+            {
+                UserModel model = new UserModel
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    MD5Password = user.Password
+                };
+                return model;
+            }
+
+        }
+
         public bool PasswordCorrect(string rpassword, string MD5PassWord)
         {
-            return  MYUser.GetMD5Hash(rpassword) == MD5PassWord;
+            return MYUser.GetMD5Hash(rpassword) == MD5PassWord;
         }
 
         public UserModel GetUser(string userName)
@@ -89,10 +113,5 @@ namespace SRV
             return email.ValidationCode == code;
         }
     }
-    public class UserModel
-    {
-        public int Id { get; set; }
-        public string MD5Password { get; set; }
-
-    }
+   
 }

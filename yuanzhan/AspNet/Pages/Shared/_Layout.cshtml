@@ -10,10 +10,8 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<head>
 
 
-</head>
 <body>
     <header>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -69,8 +67,16 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>子祥</a>
+                            @if (ViewData["UserName"] == null)
+                            {
+                                <a href="/" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">未登录</span></a>
+                            }
+                            else
+                            {
+                                <a href="/" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">@ViewData["UserName"]</span></a>
+                            }
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Log/On"><span class="glyphicon glyphicon-log-out"></span> 登录</a></li>
                                 <li class="text-warning"><a zyf-newbie-reminder-show href=""><span class="glyphicon glyphicon-list-alt"></span> 新手任务</a></li>
                                 <li><a href="/User/Single"><span class="glyphicon glyphicon-home"></span> 我的主页</a></li>
                                 <li class="divider"></li>
@@ -83,7 +89,7 @@
                                 <li><a href="/User"><span class="glyphicon glyphicon-envelope"></span> 联系方式</a></li>
                                 <li><a href="/User"><span class="glyphicon glyphicon-hdd"></span> 个人资料</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/User"><span class="glyphicon glyphicon-log-out"></span> 退出登录</a></li>
+                                <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> 退出登录</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -137,6 +143,6 @@
     </footer>
 
 
-    
+
 </body>
 

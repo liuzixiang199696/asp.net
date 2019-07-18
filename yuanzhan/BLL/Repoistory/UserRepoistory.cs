@@ -41,6 +41,11 @@ namespace BLL.Repoistory
             Email email = context.emails.Where(e => e.Id == id).SingleOrDefault();
             return email;
         }
+
+        public MYUser GetById(int id)
+        {
+            return context.users.Where(u => u.Id == id).SingleOrDefault();
+        }
     }
 
 }
