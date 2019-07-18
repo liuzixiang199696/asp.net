@@ -76,7 +76,14 @@
                                 <a href="/" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">@ViewData["UserName"]</span></a>
                             }
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/Log/On"><span class="glyphicon glyphicon-log-out"></span> 登录</a></li>
+                                <li>
+                                    <a href="/Log/On">
+                                        <span class="glyphicon glyphicon-log-out"></span> @if (ViewData["UserName"] == null)
+                                        {<text>登录</text>}
+                                    else
+                                    {<text>切换登录</text>}
+                                    </a>
+                                </li>
                                 <li class="text-warning"><a zyf-newbie-reminder-show href=""><span class="glyphicon glyphicon-list-alt"></span> 新手任务</a></li>
                                 <li><a href="/User/Single"><span class="glyphicon glyphicon-home"></span> 我的主页</a></li>
                                 <li class="divider"></li>
@@ -131,7 +138,7 @@
         <div>
             <a href="/About/Us">关于我们</a> |
             <a href="/FAQ">常见问题</a> |
-            <a href="/Suggest">意见建议</a> |
+            <a href="/PublishSuggest">意见建议</a> |
             <a href="/Notice">历史通知</a> |
             <a href="/Donate" class="text-success">友情捐赠</a> |
             <a href="/About/Fund" class="text-info">融资2018</a>
