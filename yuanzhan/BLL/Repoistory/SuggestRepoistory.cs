@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BLL.Repoistory
 {
-    class SuggestRepoistory 
+   public class SuggestRepoistory 
     {
         private SQLDBContext context;
         public SuggestRepoistory()
@@ -19,6 +20,9 @@ namespace BLL.Repoistory
             context.SaveChanges();
             return suggest;
         }
-
+        public Suggest[] GetById(int id)
+        {
+            return context.suggests.Where(u => u.Id == id).ToList().ToArray();
+        }
     }   
 }
