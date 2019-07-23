@@ -10,6 +10,8 @@ namespace BLL
         public string Address { get; set; }
         public string ValidationCode { get; set; }
         public DateTime? EmailHasValidated { get; set; }
+        public int OwnerId { get; set;}
+        public MYUser Owner { get; set; }
 
         public void MakeValidationCode()
         {

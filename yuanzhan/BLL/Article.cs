@@ -1,19 +1,14 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace assignment._17ban
+namespace BLL
 {
-    class Article : Pubish //文章
+  public  class Article
     {
-        internal List<Comment> comment { get; set; }
-        internal Appraise appraise { get; set; }
-        internal List<KeyWord> keyWords { get; set; }
-        public Article(MYUser auther, string title, string body, DateTime date)
-            :base(auther, title, body, date)
-        {
-            //Author.Articles.Add(this);
-        }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public MYUser User { get; set; }
+        public string DiscriminatorType { get; set; }
     }
 }

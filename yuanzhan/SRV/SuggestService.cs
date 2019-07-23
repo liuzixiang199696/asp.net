@@ -11,35 +11,41 @@ public class SuggestService
     {
         _suggestRepoistory = new SuggestRepoistory();
     }
-    public void Publish(string title, string Content, DateTime dateTime)
+    public Suggest Publish(string title, string Content, DateTime dateTime,int id)
     {
         Suggest suggest = new Suggest
         {
-            SuggestTitle = title,
+            //User = new UserRepoistory().GetById(id),
+            Title = title,
             SuggestContent = Content,
-            PublishSuggestDateTime = dateTime
+            PublishSuggestDateTime = dateTime,
+            Id=id
         };
-        suggest.Publish(suggest);
-       
+        return _suggestRepoistory.Save(suggest,id);
+
     }
     public SRVSuggestModel GetById(int id)
     {
-        Suggest[] suggest  = _suggestRepoistory.GetById(id);
-        if (id ==0)
+       List<Suggest> suggest = _suggestRepoistory.GetById(id);
+        if (id == 0)
         {
             return null;
         }
         else
         {
-            //suggest.ToArray().Length
-            SRVSuggestModel model = new SRVSuggestModel
-            {
-                Id = suggest[1].Id,
-                SuggestTitle = suggest[1].SuggestTitle,
-                SuggestContent = suggest[1].SuggestContent,
-                PublishSuggestDateTime = suggest[1].PublishSuggestDateTime
-            };
-            return model;
+            //    SRVSuggestModel model = new SRVSuggestModel
+            //    {
+            //        Items = new IList<Item>
+            //        {
+
+            //        }
+            //        Id = suggest.Id,
+            //        SuggestTitle = suggest.SuggestTitle,
+            //        SuggestContent = suggest.SuggestContent,
+            //        PublishSuggestDateTime = suggest.PublishSuggestDateTime
+            //    };return null;
+            //    return model;
+            return null;
         }
 
     }

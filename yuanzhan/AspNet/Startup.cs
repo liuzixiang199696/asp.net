@@ -56,7 +56,7 @@ namespace AspNet
                 CheckConsentNeeded = x => false
             }
             );
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy(new CookiePolicyOptions { CheckConsentNeeded = _ => false });
 
             app.UseMvc();
         }

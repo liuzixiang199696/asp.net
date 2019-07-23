@@ -20,13 +20,6 @@ namespace UI.Pages
         public override void OnGet()
         {
             base.OnGet();
-            //foreach (var item in collection)
-            //{
-
-            //}
-            //    SRVSuggestModel model = new SuggestService().GetById(Convert.ToInt32());
-            
-            
             
         }
     }

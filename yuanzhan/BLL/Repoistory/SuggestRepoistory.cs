@@ -14,15 +14,16 @@ namespace BLL.Repoistory
             context = new SQLDBContext();
         }
 
-        public Suggest Save(Suggest  suggest)
+        public Suggest Save(Suggest  suggest,int id)
         {
+            suggest.User = context.users.Where(u => u.Id == id).SingleOrDefault();
             context.suggests.Add(suggest);
             context.SaveChanges();
             return suggest;
         }
-        public Suggest[] GetById(int id)
+        public List<Suggest> GetById(int id)
         {
-            return context.suggests.Where(u => u.Id == id).ToList().ToArray();
+            return context.suggests.ToList();
         }
     }   
 }

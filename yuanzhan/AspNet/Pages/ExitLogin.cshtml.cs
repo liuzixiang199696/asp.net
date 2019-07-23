@@ -8,6 +8,7 @@ using SRV;
 
 namespace UI.Pages
 {
+    #region ExitLoginModel
     public class ExitLoginModel : PageModel
     {
         public const string userIdKey = "userId";
@@ -30,10 +31,11 @@ namespace UI.Pages
                     }
                 }
             }
-         
+            Response.Redirect("/Index");
         }
         public void OnPost()
         {
         }
     }
 }
+#endregion

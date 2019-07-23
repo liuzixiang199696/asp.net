@@ -20,6 +20,7 @@ namespace BLL
         public String Name { get; set; }
         public string Password { get; set; }
         public MYUser InvitedBy { get; set; }
+        public Email Email { get; set; }
 
 
         public static bool IsNameDuplicated(string name)

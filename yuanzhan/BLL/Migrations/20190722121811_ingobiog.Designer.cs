@@ -4,14 +4,16 @@ using BLL.Repoistory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BLL.Migrations
 {
     [DbContext(typeof(SQLDBContext))]
-    partial class SQLDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190722121811_ingobiog")]
+    partial class ingobiog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,14 +31,9 @@ namespace BLL.Migrations
 
                     b.Property<DateTime?>("EmailHasValidated");
 
-                    b.Property<int>("OwnerId");
-
                     b.Property<string>("ValidationCode");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OwnerId")
-                        .IsUnique();
 
                     b.ToTable("emails");
                 });
@@ -46,6 +43,8 @@ namespace BLL.Migrations
                     b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Url");
 
                     b.HasKey("BlogId");
 
@@ -105,14 +104,6 @@ namespace BLL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("suggests");
-                });
-
-            modelBuilder.Entity("BLL.Email", b =>
-                {
-                    b.HasOne("BLL.MYUser", "Owner")
-                        .WithOne("Email")
-                        .HasForeignKey("BLL.Email", "OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BLL.Entity.Article.Post", b =>
