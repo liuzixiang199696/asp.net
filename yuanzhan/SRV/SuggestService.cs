@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BLL;
-using BLL.Repoistory;
+using BLL.repoistory;
 
 public class SuggestService
 {

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
+using UI.Pages.Shared;
 
 namespace UI.Pages.Email
 {
-    public class ValidateModel : PageModel
+    public class ValidateModel : _LayoutModel
     {
         private const string _id = "id";
         private const string _code = "code";
@@ -23,9 +24,9 @@ namespace UI.Pages.Email
         [Required]
         [EmailAddress]
         public string EmailAddress { get; set; }
-        public void OnGet()
+        public override void OnGet()
         {
- 
+            base.OnGet();
             string id = Request.Query[_id];
             string code = Request.Query[_code];
             if (!string.IsNullOrEmpty(id)&&!string.IsNullOrEmpty(code))
@@ -34,7 +35,7 @@ namespace UI.Pages.Email
             }
             
         }
-        public void OnPost()
+        public override void OnPost()
         {
             if (!ModelState.IsValid)
             {

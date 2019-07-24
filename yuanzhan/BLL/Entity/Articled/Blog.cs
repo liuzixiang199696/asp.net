@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.Entity.Articled
+namespace BLL.entity.Articled
 {
     public class Blog:Article
     {

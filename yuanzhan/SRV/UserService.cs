@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using System.Text;
 using BLL;
-using BLL.Repoistory;
+using BLL.repoistory;
 
 namespace SRV
 {

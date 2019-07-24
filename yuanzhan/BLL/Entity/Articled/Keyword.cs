@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BLL.Entity.Articled
+namespace BLL.entity.Articled
 {
     public class Keyword
     {

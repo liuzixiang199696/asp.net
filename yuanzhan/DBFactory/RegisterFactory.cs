@@ -1,5 +1,5 @@
 ﻿using BLL;
-using BLL.Repoistory;
+using BLL.repoistory;
 using System;
 using System.Collections.Generic;
 using System.Text;

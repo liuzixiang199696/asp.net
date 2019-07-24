@@ -1,14 +1,18 @@
-﻿using BLL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using BLL.entity;
+using Microsoft.EntityFrameworkCore;
 
-namespace assignment._17ban
+namespace BLL.repoistory
 {
-    class Repository<T> where T :Entity
+   public class Repository<T> where T : Entity
     {
+        public SQLDBContext CurrentContext { get; set; }
+        protected DbSet<T> entities { get; set; }
         public T Save(T entity) { return entity; }
+        public Repository()
+        {
+            CurrentContext = new SQLDBContext();
+            entities = CurrentContext.Set<T>();
+        }
+
     }
 }

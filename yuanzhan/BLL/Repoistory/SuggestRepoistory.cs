@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BLL.entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BLL.Repoistory
+namespace BLL.repoistory
 {
-   public class SuggestRepoistory 
+   public class SuggestRepoistory : Repository<Entity>
     {
         private SQLDBContext context;
         public SuggestRepoistory()

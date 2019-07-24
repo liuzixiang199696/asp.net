@@ -1,4 +1,4 @@
-﻿using BLL.Entity.Articled;
+﻿using BLL.entity.Articled;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.Repoistory
+namespace BLL.repoistory
 {
     public class SQLDBContext : DbContext
     {

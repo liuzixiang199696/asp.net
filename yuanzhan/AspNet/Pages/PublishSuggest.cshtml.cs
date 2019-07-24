@@ -12,6 +12,7 @@ namespace UI.Pages
     [BindProperties]
     public class PublishSuggestModel : _LayoutModel
     {
+        public string id;
         public PublishSuggest PublishSuggest { get; set; }
 
         public override void OnGet()
@@ -25,7 +26,7 @@ namespace UI.Pages
                 return;
             }
             PublishSuggest.PublishSuggestDateTime = DateTime.Now;
-            new SuggestService().Publish(PublishSuggest.SuggestTitle, PublishSuggest.SuggestContent, PublishSuggest.PublishSuggestDateTime,Convert.ToInt32(Request.Cookies.TryGetValue("UserName",out id)));
+            _ = new SuggestService().Publish(PublishSuggest.SuggestTitle, PublishSuggest.SuggestContent, PublishSuggest.PublishSuggestDateTime, Convert.ToInt32(Request.Cookies.TryGetValue("UserName", out id)));
             return;
         }
     }
@@ -36,7 +37,7 @@ namespace UI.Pages
         public string SuggestTitle { get; set; }
         public string SuggestContent { get; set; }
         public DateTime PublishSuggestDateTime { get; set; }
-        public int id { get; set; }
+   
         // public MYUser User { get; set; }
 
     }

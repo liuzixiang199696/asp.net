@@ -1,4 +1,4 @@
-﻿using BLL.Repoistory;
+﻿using BLL.repoistory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
@@ -19,8 +19,10 @@ namespace DBFactory
                .UseLoggerFactory(MyLoggerFactory)
                .UseSqlServer(connectionString);
             DatabaseFacade db = new SQLDBContext(optionsBuilder.Options).Database;
-            //db.EnsureDeleted();      //如果存在数据库，就删除之//db.EnsureCreated();   和Migration有可能冲突，不要混合使用
-            //db.Migrate();
+            db.EnsureDeleted();      //如果存在数据库，就删除之//db.EnsureCreated();   和Migration有可能冲突，不要混合使用
+            db.Migrate();
+            RegisterFactory.Create();
+            
         }
         public static readonly LoggerFactory MyLoggerFactory
          = new LoggerFactory(

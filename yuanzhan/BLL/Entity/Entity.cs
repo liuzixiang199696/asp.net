@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.Entity
+namespace BLL.entity
 {
-    class Entity
+   public class Entity
     {
 
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using BLL;
-using BLL.Repoistory;
+using BLL.repoistory;
 
 namespace SRV
 {
