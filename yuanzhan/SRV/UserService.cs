@@ -7,14 +7,14 @@ using BLL.repoistory;
 
 namespace SRV
 {
-    public class UserService
+    public class UserService:IUserService
     {
         private UserRepoistory _userRepoistory;
+
         public UserService()
         {
             _userRepoistory = new UserRepoistory();
         }
-
 
         public void SendValiadationEmail(string emailAddress, string validationUrlFormat)
         {
@@ -80,7 +80,6 @@ namespace SRV
                 return userModel;
             }
         }
-
 
         //public UserModel Login(string userName, string passWord)
         //{

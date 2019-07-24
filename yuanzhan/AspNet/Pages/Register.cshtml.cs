@@ -61,7 +61,5 @@ namespace AspNet.Pages
         public string ConfirmPassWord { get; set; }
         public bool RemeberGender { get; set; }
         public bool Remeber { get; set; }
-
-
     }
 }
