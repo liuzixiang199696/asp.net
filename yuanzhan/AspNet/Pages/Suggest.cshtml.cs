@@ -14,7 +14,7 @@ namespace UI.Pages
     public class SuggestModel : _LayoutModel
     {
         private SuggestService _suggestService;
-        public List<Suggest> zx { get; set; }
+        public List<Suggest> SuggestS { get; set; }
         public SuggestModel()
         {
             _suggestService = new SuggestService();
@@ -23,7 +23,7 @@ namespace UI.Pages
         public override void OnGet()
         {
             base.OnGet();
-             zx = _suggestService.GetById();
+             SuggestS = _suggestService.GetSuggest();
         }
     }
 }

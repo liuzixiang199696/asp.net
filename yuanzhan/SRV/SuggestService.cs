@@ -30,9 +30,9 @@ public class SuggestService
         return _suggestRepoistory.Save(suggest, id);
 
     }
-    public List<Suggest> GetById()
+    public List<Suggest> GetSuggest()
     {
-        suggests = _suggestRepoistory.GetById();
+        suggests = _suggestRepoistory.GetSuggest();
 
         return suggests;
     }

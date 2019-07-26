@@ -22,7 +22,7 @@ namespace BLL.repoistory
             context.SaveChanges();
             return suggest;
         }
-        public List<Suggest> GetById()
+        public List<Suggest> GetSuggest()
         {
             return context.suggests.ToList();
         }
