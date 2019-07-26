@@ -14,15 +14,15 @@ namespace BLL.repoistory
         {
 
         }
-        public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
-        {
+        //public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
+        //{
 
-        }
-        public static readonly LoggerFactory MyLoggerFactory
-        = new LoggerFactory(new[]
-        {
-              new ConsoleLoggerProvider((_, __) => true, true) }
-        );
+        //}
+        //public static readonly LoggerFactory MyLoggerFactory
+        //= new LoggerFactory(new[]
+        //{
+        //      new ConsoleLoggerProvider((_, __) => true, true) }
+        //);
         //public SQLDBContext(DbContextOptions<SQLDBContext> options)
         //   : base(options) { }
         public DbSet<Suggest> suggests { get; set; }
@@ -32,10 +32,10 @@ namespace BLL.repoistory
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=17bang;Integrated Security=True;";
-            //optionsBuilder.UseSqlServer(connectionString);
-            optionsBuilder
-               .UseLoggerFactory(MyLoggerFactory)
-               .UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString);
+            //optionsBuilder
+            //   .UseLoggerFactory(MyLoggerFactory)
+            //   .UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

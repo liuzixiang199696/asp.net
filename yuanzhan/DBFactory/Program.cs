@@ -18,7 +18,7 @@ namespace DBFactory
             optionsBuilder
                .UseLoggerFactory(MyLoggerFactory)
                .UseSqlServer(connectionString);
-            DatabaseFacade db = new SQLDBContext(optionsBuilder.Options).Database;
+            DatabaseFacade db = new SQLDBContext().Database;
             db.EnsureDeleted();      //如果存在数据库，就删除之//db.EnsureCreated();   和Migration有可能冲突，不要混合使用
             db.Migrate();
             RegisterFactory.Create();

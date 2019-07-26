@@ -1,8 +1,5 @@
 ﻿@page
 @model UI.Pages.SuggestModel
-@{
-    ViewData["Title"] = "Suggest";
-}
 
     <h2><span class="glyphicon glyphicon-list-alt"></span>意见建议</h2>
     <form method="get">
@@ -11,9 +8,14 @@
         </span><br />
         <h4 style="margin-left:20px">
             <span class="glyphicon glyphicon-eye-open"></span><span>title</span>
-        </h4>
-        <span style="margin-left:20px">
-            <span>Content</span>
-        </span>
+        </h4> 
+        @{         
+            foreach (var item in Model.zx)
+            {
+                 @item.Title <br />
+                 @item.SuggestContent <br />
+                 @item.PublishSuggestDateTime <br />
+            }
+}
     </form>
 

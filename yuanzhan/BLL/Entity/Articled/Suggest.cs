@@ -17,7 +17,7 @@ namespace BLL
 
         public void Publish(Suggest suggest,int id)
         {
-            User = new UserRepoistory().GetById(id);
+           // User = new UserRepoistory().GetById(id);
             SuggestRepoistory suggestRepoistory = new SuggestRepoistory();
             suggestRepoistory.Save(suggest,id);
         }

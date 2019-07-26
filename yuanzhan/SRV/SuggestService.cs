@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using BLL;
 using BLL.repoistory;
+using SRV;
 
 public class SuggestService
 {
     private SuggestRepoistory _suggestRepoistory;
+    private Suggest _suggest;
+    private SuggestModel _suggestmodel;
+    public List<Suggest> suggests { get; set; }
     public SuggestService()
     {
         _suggestRepoistory = new SuggestRepoistory();
+        _suggestmodel = new SuggestModel();
+        _suggest = new Suggest();
     }
-    public Suggest Publish(string title, string Content, DateTime dateTime,int id)
+    public Suggest Publish(string title, string Content, DateTime dateTime, int id)
     {
         Suggest suggest = new Suggest
         {
@@ -19,34 +25,17 @@ public class SuggestService
             Title = title,
             SuggestContent = Content,
             PublishSuggestDateTime = dateTime,
-            Id=id
+            Id = id
         };
-        return _suggestRepoistory.Save(suggest,id);
+        return _suggestRepoistory.Save(suggest, id);
 
     }
-    public SRVSuggestModel GetById(int id)
+    public List<Suggest> GetById()
     {
-       List<Suggest> suggest = _suggestRepoistory.GetById(id);
-        if (id == 0)
-        {
-            return null;
-        }
-        else
-        {
-            //    SRVSuggestModel model = new SRVSuggestModel
-            //    {
-            //        Items = new IList<Item>
-            //        {
+        suggests = _suggestRepoistory.GetById();
 
-            //        }
-            //        Id = suggest.Id,
-            //        SuggestTitle = suggest.SuggestTitle,
-            //        SuggestContent = suggest.SuggestContent,
-            //        PublishSuggestDateTime = suggest.PublishSuggestDateTime
-            //    };return null;
-            //    return model;
-            return null;
-        }
-
+        return suggests;
     }
+
 }
+

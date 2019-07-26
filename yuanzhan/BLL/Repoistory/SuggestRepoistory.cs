@@ -17,12 +17,12 @@ namespace BLL.repoistory
 
         public Suggest Save(Suggest  suggest,int id)
         {
-            suggest.User = context.users.Where(u => u.Id == id).SingleOrDefault();
+           // suggest.User = context.users.Where(u => u.Id == id).SingleOrDefault();
             context.suggests.Add(suggest);
             context.SaveChanges();
             return suggest;
         }
-        public List<Suggest> GetById(int id)
+        public List<Suggest> GetById()
         {
             return context.suggests.ToList();
         }
