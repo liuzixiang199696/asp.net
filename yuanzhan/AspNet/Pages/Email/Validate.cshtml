@@ -1,6 +1,6 @@
 ﻿@page
 @model UI.Pages.Email.ValidateModel
     <form method="post">
-        <label>Email:</label><input asp-for="EmailAddress" />
+        <label>Email:</label><input asp-for="EmailAddress" /><span asp-validation-for="EmailAddress"></span>
         <button type="submit">提交</button>
     </form>

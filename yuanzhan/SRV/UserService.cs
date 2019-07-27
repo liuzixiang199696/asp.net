@@ -40,6 +40,19 @@ namespace SRV
             SmtpServer.Send(mail);
 
         }
+        public int GetByAutherId(int id)
+        {
+            Email email = _userRepoistory.GetEmailById(id);
+            if (email.OwnerId!=0)
+            {
+                return id;
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
 
         public UserModel GetById(int id)
         {

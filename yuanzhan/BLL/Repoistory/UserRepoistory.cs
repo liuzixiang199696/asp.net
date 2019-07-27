@@ -39,7 +39,7 @@ namespace BLL.repoistory
 
         public Email GetEmailById(int id)
         {
-            Email email = context.emails.Where(e => e.Id == id).SingleOrDefault();
+            Email email = context.emails.Where(e => e.OwnerId == id).SingleOrDefault();
             return email;
         }
 

@@ -44,7 +44,16 @@ namespace UI.Pages.Email
                 return;
             }
             string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?{_code}={{0}}&{_id}={{1}}";
-            _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat, dateTime, Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out AutherId )));
+            if (_userService.GetByAutherId(Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out AutherId)))==0)
+            {
+                _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat, dateTime, Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out AutherId)));
+            }
+            else
+            {
+                ModelState.AddModelError(EmailAddress, "*此用户已注册邮箱！");               
+                return;
+            }
+           
 
         }
     }
