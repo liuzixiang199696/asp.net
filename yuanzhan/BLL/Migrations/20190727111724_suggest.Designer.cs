@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BLL.Migrations
 {
     [DbContext(typeof(SQLDBContext))]
-    [Migration("20190724032448_1")]
-    partial class _1
+    [Migration("20190727111724_suggest")]
+    partial class suggest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,22 +49,13 @@ namespace BLL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DiscriminatorType")
-                        .IsRequired();
-
                     b.Property<string>("Title");
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Blog");
-
-                    b.HasDiscriminator<string>("DiscriminatorType");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -141,7 +132,7 @@ namespace BLL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DiscriminatorType");
+                    b.Property<int>("AutherId");
 
                     b.Property<DateTime>("PublishSuggestDateTime");
 
@@ -149,11 +140,7 @@ namespace BLL.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<int?>("UserId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("suggests");
                 });
@@ -164,13 +151,6 @@ namespace BLL.Migrations
                         .WithOne("Email")
                         .HasForeignKey("BLL.Email", "OwnerId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BLL.entity.Articled.Blog", b =>
-                {
-                    b.HasOne("BLL.MYUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -199,13 +179,6 @@ namespace BLL.Migrations
                     b.HasOne("BLL.MYUser", "InvitedBy")
                         .WithMany()
                         .HasForeignKey("InvitedById");
-                });
-
-            modelBuilder.Entity("BLL.Suggest", b =>
-                {
-                    b.HasOne("BLL.MYUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

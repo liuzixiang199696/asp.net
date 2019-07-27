@@ -17,17 +17,16 @@ public class SuggestService
         _suggestmodel = new SuggestModel();
         _suggest = new Suggest();
     }
-    public Suggest Publish(string title, string Content, DateTime dateTime, int id)
+    public void Publish(string title, string Content, DateTime dateTime, int autherid)
     {
         Suggest suggest = new Suggest
         {
-            //User = new UserRepoistory().GetById(id),
             Title = title,
             SuggestContent = Content,
             PublishSuggestDateTime = dateTime,
-            Id = id
+           AutherId=autherid
         };
-        return _suggestRepoistory.Save(suggest, id);
+        suggest.Publish(suggest);
 
     }
     public List<Suggest> GetSuggest()
@@ -36,6 +35,7 @@ public class SuggestService
 
         return suggests;
     }
+
 
 }
 

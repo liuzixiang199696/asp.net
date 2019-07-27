@@ -48,7 +48,7 @@ namespace BLL.repoistory
             //       .HasForeignKey<Email>(e => e.OwnerId); 
             modelBuilder.Entity<BlogToKeywords>()
                 .HasKey(bk => new { bk.BlogId, bk.KeywordId });
-            modelBuilder.Entity<Blog>().HasDiscriminator(b => b.DiscriminatorType);
+           // modelBuilder.Entity<Blog>().HasDiscriminator(b => b.DiscriminatorType);
         }
 
 

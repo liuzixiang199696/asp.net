@@ -15,7 +15,9 @@ namespace UI.Pages.Email
         private const string _id = "id";
         private const string _code = "code";
         public const string VALID = "reminder";
+        public DateTime dateTime = DateTime.Now;
         private UserService _userService;
+        public string AutherId;
         public ValidateModel()
         {
             _userService = new UserService();
@@ -29,11 +31,11 @@ namespace UI.Pages.Email
             base.OnGet();
             string id = Request.Query[_id];
             string code = Request.Query[_code];
-            if (!string.IsNullOrEmpty(id)&&!string.IsNullOrEmpty(code))
+            if (!string.IsNullOrEmpty(id) && !string.IsNullOrEmpty(code))
             {
-                ViewData[VALID] = _userService.ValiadationEmail(Convert.ToInt32(id), code); 
+                ViewData[VALID] = _userService.ValiadationEmail(Convert.ToInt32(id), code);
             }
-            
+
         }
         public override void OnPost()
         {
@@ -42,7 +44,7 @@ namespace UI.Pages.Email
                 return;
             }
             string ValidationUrlFormat = $"{Request.Scheme}://{Request.Host}/Email/Validate?{_code}={{0}}&{_id}={{1}}";
-            _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat);
+            _userService.SendValiadationEmail(EmailAddress, ValidationUrlFormat, dateTime, Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out AutherId )));
 
         }
     }

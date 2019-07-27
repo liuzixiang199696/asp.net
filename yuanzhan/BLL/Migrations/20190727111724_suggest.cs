@@ -4,10 +4,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BLL.Migrations
 {
-    public partial class _1 : Migration
+    public partial class suggest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Blog",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    Url = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Blog", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Keyword",
                 columns: table => new
@@ -19,6 +33,22 @@ namespace BLL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Keyword", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "suggests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    AutherId = table.Column<int>(nullable: false),
+                    SuggestContent = table.Column<string>(nullable: true),
+                    PublishSuggestDateTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_suggests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,70 +73,24 @@ namespace BLL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blog",
+                name: "Post",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PostId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: true),
-                    DiscriminatorType = table.Column<string>(nullable: false),
-                    Url = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(nullable: true),
+                    BlogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blog", x => x.Id);
+                    table.PrimaryKey("PK_Post", x => x.PostId);
                     table.ForeignKey(
-                        name: "FK_Blog_users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "emails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Address = table.Column<string>(nullable: true),
-                    ValidationCode = table.Column<string>(nullable: true),
-                    EmailHasValidated = table.Column<DateTime>(nullable: true),
-                    OwnerId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_emails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_emails_users_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "users",
+                        name: "FK_Post_Blog_BlogId",
+                        column: x => x.BlogId,
+                        principalTable: "Blog",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "suggests",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: true),
-                    DiscriminatorType = table.Column<string>(nullable: true),
-                    SuggestContent = table.Column<string>(nullable: true),
-                    PublishSuggestDateTime = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_suggests", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_suggests_users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -134,30 +118,26 @@ namespace BLL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Post",
+                name: "emails",
                 columns: table => new
                 {
-                    PostId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
-                    BlogId = table.Column<int>(nullable: false)
+                    Address = table.Column<string>(nullable: true),
+                    ValidationCode = table.Column<string>(nullable: true),
+                    EmailHasValidated = table.Column<DateTime>(nullable: true),
+                    OwnerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Post", x => x.PostId);
+                    table.PrimaryKey("PK_emails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Post_Blog_BlogId",
-                        column: x => x.BlogId,
-                        principalTable: "Blog",
+                        name: "FK_emails_users_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Blog_UserId",
-                table: "Blog",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BlogToKeywords_KeywordId",
@@ -174,11 +154,6 @@ namespace BLL.Migrations
                 name: "IX_Post_BlogId",
                 table: "Post",
                 column: "BlogId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_suggests_UserId",
-                table: "suggests",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_users_InvitedById",
@@ -211,10 +186,10 @@ namespace BLL.Migrations
                 name: "Keyword");
 
             migrationBuilder.DropTable(
-                name: "Blog");
+                name: "users");
 
             migrationBuilder.DropTable(
-                name: "users");
+                name: "Blog");
         }
     }
 }

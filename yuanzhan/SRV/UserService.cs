@@ -7,7 +7,7 @@ using BLL.repoistory;
 
 namespace SRV
 {
-    public class UserService:IUserService
+    public class UserService
     {
         private UserRepoistory _userRepoistory;
 
@@ -16,9 +16,10 @@ namespace SRV
             _userRepoistory = new UserRepoistory();
         }
 
-        public void SendValiadationEmail(string emailAddress, string validationUrlFormat)
+        public void SendValiadationEmail(string emailAddress, string validationUrlFormat,DateTime dateTime,int id)
         {
-            Email email = new Email { Address = emailAddress };
+            dateTime = DateTime.Now;
+            Email email = new Email { Address = emailAddress,EmailHasValidated=dateTime,OwnerId=id};
             email.MakeValidationCode();
             _userRepoistory = new UserRepoistory();
             _userRepoistory.Save(email);
@@ -81,33 +82,32 @@ namespace SRV
             }
         }
 
-        //public UserModel Login(string userName, string passWord)
-        //{
-           
-        //    User user = _userRepoistory.GetByName(userName);
-        //    if (user == null)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        UserModel userModel = new UserModel();
-        //        if (user.GetMD5Hash(passWord) == user.Password)
-        //        {
+        public UserModel Login(string userName, string passWord)
+        {
 
-        //        }
-        //        else { }
-        //        userModel.Id = user.Id;
-        //        userModel.MD5Password = user.Password;
-        //        return userModel;
-        //    }
-           
-        //}
+            MYUser user = _userRepoistory.GetByName(userName);
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                UserModel userModel = new UserModel();
+                //if (user.GetMD5Hash(passWord) == user.Password)
+                //{
+
+                //}
+                //else { }
+                userModel.Id = user.Id;
+                userModel.MD5Password = user.Password;
+                return userModel;
+            }
+
+        }
 
         public bool ValiadationEmail(int id, string code)
         {
             Email email = _userRepoistory.GetEmailById(id);
-            email.Validate();
             _userRepoistory.Flush();
             return email.ValidationCode == code;
         }

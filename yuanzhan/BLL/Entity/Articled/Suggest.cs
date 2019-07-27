@@ -11,15 +11,16 @@ namespace BLL
         {
 
         }
+        public int AutherId { get; set; }
         public string SuggestContent { get; set; }
         public DateTime PublishSuggestDateTime { get; set; }
         //public  MYUser User { get; set; }
 
-        public void Publish(Suggest suggest,int id)
+        public void Publish(Suggest suggest)
         {
            // User = new UserRepoistory().GetById(id);
             SuggestRepoistory suggestRepoistory = new SuggestRepoistory();
-            suggestRepoistory.Save(suggest,id);
+            suggestRepoistory.Save(suggest);
         }
     }
 }

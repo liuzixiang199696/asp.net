@@ -15,7 +15,7 @@ namespace BLL.repoistory
             context = new SQLDBContext();
         }
 
-        public Suggest Save(Suggest  suggest,int id)
+        public Suggest Save(Suggest  suggest)
         {
            // suggest.User = context.users.Where(u => u.Id == id).SingleOrDefault();
             context.suggests.Add(suggest);

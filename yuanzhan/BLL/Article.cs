@@ -8,7 +8,6 @@ namespace BLL
     {
         public int Id { get; set; }
         public string Title { get; set; }
-       // public MYUser User { get; set; }
-        public string DiscriminatorType { get; set; }
+       // public string DiscriminatorType { get; set; }
     }
 }

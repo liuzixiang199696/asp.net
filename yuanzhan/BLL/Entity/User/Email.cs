@@ -11,8 +11,6 @@ namespace BLL
         public string ValidationCode { get; set; }
         public DateTime? EmailHasValidated { get; set; }
         public int OwnerId { get; set;}
-        public MYUser Owner { get; set; }
-
         public void MakeValidationCode()
         {
             if (!string.IsNullOrEmpty(ValidationCode))
@@ -24,11 +22,6 @@ namespace BLL
         public void Send(string validationUrl)
         {
 
-        }
-
-        public void Validate()
-        {
-            EmailHasValidated = DateTime.Now;
         }
     }
 }

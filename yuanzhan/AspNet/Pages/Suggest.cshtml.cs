@@ -24,6 +24,8 @@ namespace UI.Pages
         {
             base.OnGet();
              SuggestS = _suggestService.GetSuggest();
+             
+
         }
     }
 }

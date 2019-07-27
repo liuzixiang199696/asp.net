@@ -30,11 +30,11 @@ namespace AspNet
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-                services.AddHttpContextAccessor();
-                services.AddTransient<IUserService, UserService>();
+
             });
 
-
+            //services.AddHttpContextAccessor();
+            //services.AddTransient<IUserService, UserService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
