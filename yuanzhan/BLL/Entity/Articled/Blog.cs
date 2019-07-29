@@ -12,7 +12,7 @@ namespace BLL.entity.Articled
         public IList<BlogToKeywords> Keywords { get; set; }
     }
 
-    public class Post
+    public class Post:Entity
     {
         public int PostId { get; set; }
         public string Title { get; set; }

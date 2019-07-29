@@ -18,10 +18,10 @@ namespace BLL.repoistory
             CurrentContext.SaveChanges();
             return entity;
         }
-        public T Get(int id)
-        {
-            return entities.single(u => u.id == id);
-        }
+        //public T Get(int id)
+        //{
+        //    return entities.single(u => u.id == id);
+        //}
 
     }
 }

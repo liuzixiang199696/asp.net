@@ -1,7 +1,8 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using BLL;
+using BLL.entity;
 using BLL.repoistory;
 using SRV;
 
@@ -22,9 +23,9 @@ public class SuggestService
         Suggest suggest = new Suggest
         {
             Title = title,
-            SuggestContent = Content,
+            Content = Content,
             PublishSuggestDateTime = dateTime,
-           AutherId=autherid
+            Id  =autherid
         };
         suggest.Publish(suggest);
 

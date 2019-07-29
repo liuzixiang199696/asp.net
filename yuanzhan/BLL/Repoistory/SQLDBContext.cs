@@ -40,15 +40,11 @@ namespace BLL.repoistory
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MYUser>().HasIndex(u=>u.Name).IsUnique();
-            //modelBuilder.Entity<MYUser>((options) => { options.ToTable("Users").Property(x => x.Name).IsRequired(); });
-            //modelBuilder.Entity<Blog>((options) => { options.Ignore(x => x.Url); });
-            //modelBuilder.Entity<Email>()
-            //       .HasOne(e => e.Owner)   
-            //       .WithOne(u => u.Email)  
-            //       .HasForeignKey<Email>(e => e.OwnerId); 
+            modelBuilder.Entity<MYUser>((options) => { options.ToTable("Users").Property(x => x.Name).IsRequired(); });
+            modelBuilder.Entity<Blog>((options) => { options.Ignore(x => x.Url); });
             modelBuilder.Entity<BlogToKeywords>()
                 .HasKey(bk => new { bk.BlogId, bk.KeywordId });
-           // modelBuilder.Entity<Blog>().HasDiscriminator(b => b.DiscriminatorType);
+            //modelBuilder.Entity<Blog>().HasDiscriminator(b => b.DiscriminatorType);
         }
 
 

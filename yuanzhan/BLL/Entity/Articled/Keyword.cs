@@ -2,9 +2,8 @@
 
 namespace BLL.entity.Articled
 {
-    public class Keyword
+    public class Keyword:Entity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
 
         //注意：不是IList<Blog>

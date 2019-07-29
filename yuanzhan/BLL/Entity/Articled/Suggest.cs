@@ -1,4 +1,5 @@
-﻿using BLL.repoistory;
+﻿using BLL.entity;
+using BLL.repoistory;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,9 +12,6 @@ namespace BLL
         {
 
         }
-        public int AutherId { get; set; }
-        public string SuggestContent { get; set; }
-        public DateTime PublishSuggestDateTime { get; set; }
         //public  MYUser User { get; set; }
 
         public void Publish(Suggest suggest)
