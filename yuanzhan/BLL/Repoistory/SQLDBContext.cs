@@ -44,7 +44,7 @@ namespace BLL.repoistory
             modelBuilder.Entity<Blog>((options) => { options.Ignore(x => x.Url); });
             modelBuilder.Entity<BlogToKeywords>()
                 .HasKey(bk => new { bk.BlogId, bk.KeywordId });
-            //modelBuilder.Entity<Blog>().HasDiscriminator(b => b.DiscriminatorType);
+           modelBuilder.Entity<Article>().HasDiscriminator(b => b.DiscriminatorType);
         }
 
 

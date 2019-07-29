@@ -10,6 +10,6 @@ namespace BLL
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime PublishSuggestDateTime { get; set; }
-        // public string DiscriminatorType { get; set; }
+         public string DiscriminatorType { get; set; }
     }
 }
