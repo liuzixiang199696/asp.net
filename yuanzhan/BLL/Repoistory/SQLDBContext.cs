@@ -14,18 +14,16 @@ namespace BLL.repoistory
         {
 
         }
-        //public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
-        //{
+        public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
+        {
 
-        //}
-        //public static readonly LoggerFactory MyLoggerFactory
-        //= new LoggerFactory(new[]
-        //{
-        //      new ConsoleLoggerProvider((_, __) => true, true) }
-        //);
-        //public SQLDBContext(DbContextOptions<SQLDBContext> options)
-        //   : base(options) { }
-        public DbSet<Suggest> suggests { get; set; }
+        }
+        public static readonly LoggerFactory MyLoggerFactory
+        = new LoggerFactory(new[]
+        {
+              new ConsoleLoggerProvider((_, __) => true, true) }
+        );
+        public DbSet<Article> Articles { get; set; }
         public DbSet<MYUser> users { get; set; }
         public DbSet<Email> emails { get; set; }
 

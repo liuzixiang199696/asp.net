@@ -18,6 +18,10 @@ namespace BLL.repoistory
             CurrentContext.SaveChanges();
             return entity;
         }
+        public void Flush()
+        {
+            CurrentContext.SaveChanges();
+        }
         //public T Get(int id)
         //{
         //    return entities.single(u => u.id == id);
