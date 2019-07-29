@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.entity
+namespace SRV
 {
-   public class Entity
+    class IService
     {
-        public int id { get; set; }
+
+
     }
 }
