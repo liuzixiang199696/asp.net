@@ -10,10 +10,6 @@ namespace BLL.repoistory
     public class UserRepoistory:Repository<Entity>
     {     
         public SQLDBContext context;
-        public UserRepoistory()
-        {
-            context = new SQLDBContext();           
-        }
         public MYUser Save(MYUser user)
         {           
            context.users.Add(user);
@@ -32,7 +28,7 @@ namespace BLL.repoistory
             return context.users.Where(u => u.Name == userName).SingleOrDefault();
         }
 
-        public void Flush()
+        public  void Flush() 
         {
             throw new NotImplementedException();
         }
