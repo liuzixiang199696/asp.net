@@ -7,7 +7,7 @@ using BLL.repoistory;
 
 namespace SRV
 {
-    public class UserService
+    public class UserService:IUserService
     {
         private UserRepoistory _userRepoistory;
 

@@ -38,7 +38,7 @@ namespace AspNet
 
             //services.AddHttpContextAccessor();
             services.AddTransient<DbContext,SQLDBContext>();
-            services.AddTransient<SQLDBContext, SuggestRepoistory>();
+            services.AddTransient<IUserService,UserService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
