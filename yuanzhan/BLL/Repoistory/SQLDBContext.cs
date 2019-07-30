@@ -10,22 +10,18 @@ namespace BLL.repoistory
 {
     public class SQLDBContext : DbContext
     {
-        public SQLDBContext()
-        {
+        //public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
+        //{
 
-        }
-        public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
-        {
-
-        }
+        //}
         public static readonly LoggerFactory MyLoggerFactory
         = new LoggerFactory(new[]
         {
               new ConsoleLoggerProvider((_, __) => true, true) }
         );
-        public DbSet<Article> Articles { get; set; }
-        public DbSet<MYUser> users { get; set; }
-        public DbSet<Email> emails { get; set; }
+        //public DbSet<Article> Articles { get; set; }
+        //public DbSet<MYUser> users { get; set; }
+        //public DbSet<Email> emails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

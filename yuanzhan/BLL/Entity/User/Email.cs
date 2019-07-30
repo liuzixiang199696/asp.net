@@ -1,12 +1,12 @@
-﻿using System;
+﻿using BLL.entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL
 {
-    public class Email
+    public class Email:Entity
     {
-        public int Id { get; set; }
         public string Address { get; set; }
         public string ValidationCode { get; set; }
         public DateTime? EmailHasValidated { get; set; }

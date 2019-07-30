@@ -8,24 +8,24 @@ using System.Text;
 namespace BLL.repoistory
 {
     public class UserRepoistory:Repository<Entity>
-    {     
-        public SQLDBContext context;
+    {
+        MYUser MYUser = new MYUser();  
         public MYUser Save(MYUser user)
-        {           
-           context.users.Add(user);
-           context.SaveChanges();
+        {
+            entities.Add(user);
+            entities.SaveChanges();
             return user;
         }
         public Email Save(Email email)
         {
-          context.emails.Add(email);
-           context.SaveChanges();
+            entities.Add(email);
+            entities.SaveChanges();
             return email;
         }
 
         public MYUser GetByName(string userName)
         {
-            return context.users.Where(u => u.Name == userName).SingleOrDefault();
+            return entities.Where(u => u.Name == userName).SingleOrDefault();
         }
 
         public  void Flush() 
@@ -41,7 +41,7 @@ namespace BLL.repoistory
 
         public MYUser GetById(int id)
         {
-            return context.users.Where(u => u.Id == id).SingleOrDefault();
+            return context.users.Where(u => u.id == id).SingleOrDefault();
         }
     }
 

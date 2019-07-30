@@ -24,7 +24,7 @@ namespace SRV
             _userRepoistory = new UserRepoistory();
             _userRepoistory.Save(email);
 
-            string validationUrl = string.Format(validationUrlFormat, email.ValidationCode, email.Id);
+            string validationUrl = string.Format(validationUrlFormat, email.ValidationCode, email.id);
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("q123922261@163.com");
             mail.To.Add(emailAddress);
@@ -65,7 +65,7 @@ namespace SRV
             {
                 UserModel model = new UserModel
                 {
-                    Id = user.Id,
+                    Id = user.id,
                     Name = user.Name,
                     MD5Password = user.Password
                 };
@@ -89,7 +89,7 @@ namespace SRV
             else
             {
                 UserModel userModel = new UserModel();
-                userModel.Id = user.Id;
+                userModel.Id = user.id;
                 userModel.MD5Password = user.Password;
                 return userModel;
             }
@@ -111,7 +111,7 @@ namespace SRV
 
                 //}
                 //else { }
-                userModel.Id = user.Id;
+                userModel.Id = user.id;
                 userModel.MD5Password = user.Password;
                 return userModel;
             }

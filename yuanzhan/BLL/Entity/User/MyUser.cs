@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BLL.entity;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -7,16 +8,13 @@ using System.Text;
 
 namespace BLL
 {
-    public class MYUser
+    public class MYUser:Entity
     {
         static MYUser()
         {
-
             _UserHelper = new UserHelper();
         }
-
         private static UserHelper _UserHelper;
-        public int Id { get; set; }
         public String Name { get; set; }
         public string Password { get; set; }
         public MYUser InvitedBy { get; set; }
