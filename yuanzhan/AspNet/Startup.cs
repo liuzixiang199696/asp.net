@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNet.Pages;
 using BLL.entity;
 using BLL.repoistory;
 using Microsoft.AspNetCore.Builder;
@@ -36,8 +37,8 @@ namespace AspNet
 
             });
 
-            //services.AddHttpContextAccessor();
-            services.AddTransient<IUserService,UserService>();
+            services.AddDIService();
+            services.AddDIRepoistory();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
