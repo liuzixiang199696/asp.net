@@ -12,10 +12,10 @@ namespace DBFactory
     internal class RegisterFactory
     {
         internal static MYUser zhangsan, wangwu;
-        private static UserRepoistory _userPepo; 
-        static RegisterFactory()
+        private static UserRepoistory _userPepoistory; 
+         RegisterFactory(UserRepoistory userPepoistory)
         {
-            _userPepo = new UserRepoistory();
+            _userPepoistory = userPepoistory;
         }
         internal static void Create()
         {

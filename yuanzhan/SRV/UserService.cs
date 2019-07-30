@@ -7,13 +7,13 @@ using BLL.repoistory;
 
 namespace SRV
 {
-    public class UserService:IUserService
+    public class UserService: BaseService,IUserService
     {
         private UserRepoistory _userRepoistory;
 
-        public UserService()
+        public UserService(UserRepoistory userRepoistory)
         {
-            _userRepoistory = new UserRepoistory();
+            _userRepoistory = userRepoistory;
         }
 
         public void SendValiadationEmail(string emailAddress, string validationUrlFormat,DateTime dateTime,int id)
@@ -21,7 +21,6 @@ namespace SRV
             dateTime = DateTime.Now;
             Email email = new Email { Address = emailAddress,EmailHasValidated=dateTime,OwnerId=id};
             email.MakeValidationCode();
-            _userRepoistory = new UserRepoistory();
             _userRepoistory.Save(email);
 
             string validationUrl = string.Format(validationUrlFormat, email.ValidationCode, email.id);

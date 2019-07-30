@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SRV
 {
-   public class SuggestModel
+   public class SuggestModel: BaseService
     {
         public int Id { get; set; }
         public string Title { get; set; }             

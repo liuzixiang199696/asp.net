@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL.repoistory
+{
+
+    public class EmailRepoistory:Repository<Email>
+    {
+        public EmailRepoistory(DbContext context):base(context)
+        {
+
+        }
+    }
+}

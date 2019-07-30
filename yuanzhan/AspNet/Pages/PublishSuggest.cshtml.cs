@@ -10,22 +10,25 @@ using UI.Pages.Shared;
 namespace UI.Pages
 {
     [BindProperties]
-    public class PublishSuggestModel : _LayoutModel
+    public class PublishSuggestModel 
     {
         public PublishSuggest PublishSuggest { get; set; }
-
-        public override void OnGet()
+        private SuggestService _suggestService;
+        private _LayoutModel _LayoutModel;
+        public PublishSuggestModel(SuggestService suggestService, _LayoutModel LayoutModel)
         {
-            base.OnGet();
+            _suggestService = suggestService;
+            _LayoutModel = LayoutModel;
         }
-        public override void OnPost()
+        public  void OnGet()
         {
-            if (!ModelState.IsValid)
-            {
-                return;
-            }
+            _LayoutModel.OnGet();
+        }
+        public void OnPost()
+        {
             PublishSuggest.PublishSuggestDateTime = DateTime.Now;
-            new SuggestService().Publish(PublishSuggest.SuggestTitle, PublishSuggest.SuggestContent, PublishSuggest.PublishSuggestDateTime, Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out PublishSuggest.AutherId)));
+            _suggestService.Publish(PublishSuggest.SuggestTitle, PublishSuggest.SuggestContent, PublishSuggest.PublishSuggestDateTime,
+                Convert.ToInt32(_LayoutModel.Request.Cookies.TryGetValue("UserId", out PublishSuggest.AutherId)));
             return;
         }
     }

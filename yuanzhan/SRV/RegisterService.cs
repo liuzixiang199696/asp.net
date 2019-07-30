@@ -4,8 +4,13 @@ using BLL.repoistory;
 
 namespace SRV
 {
-    public class RegisterService
+    public class RegisterService: BaseService
     {
+        UserRepoistory _userRepoistory;
+        public RegisterService(UserRepoistory userRepoistory)
+        {
+            _userRepoistory = userRepoistory;
+        }
         public void Register(string username, string password)
         {
             MYUser user = new MYUser
@@ -14,13 +19,13 @@ namespace SRV
                 Password = password
             };
             user.Register(user);
-            new UserRepoistory().Save(user);
+            _userRepoistory.Save(user);
 
         }
 
         public bool HasExist(string userName)
         {
-            return new UserRepoistory().GetByName(userName) != null;
+            return _userRepoistory.GetByName(userName) != null;
         }
     }
 }

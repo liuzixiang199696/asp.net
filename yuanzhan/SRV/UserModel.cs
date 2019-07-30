@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SRV
 {
-    public class UserModel
+    public class UserModel: BaseService
     {
         public int Id { get; set; }
         public string Name { get; set; }

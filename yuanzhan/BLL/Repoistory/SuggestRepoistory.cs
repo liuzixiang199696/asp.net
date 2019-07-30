@@ -9,15 +9,14 @@ namespace BLL.repoistory
 {
    public class SuggestRepoistory : Repository<Entity>
     {
-        private SQLDBContext _context;
-        public SuggestRepoistory(SQLDBContext context)
+        public SuggestRepoistory(DbContext context):base(context)
         {
-            _context = context;
+
         }
         public Suggest Save(Suggest  suggest)
         {
-            _context.Add(suggest);
-            _context.SaveChanges();
+            CurrentContext.Add(suggest);
+            CurrentContext.SaveChanges();
             return suggest;
         }
         public List<Suggest> GetSuggest()

@@ -13,13 +13,17 @@ namespace UI.Pages
     {
         public const string userIdKey = "userId";
         protected const string userAuth = "PassWord";
-
+        private UserService _userService;
+        public ExitLoginModel(UserService userService)
+        {
+            _userService = userService;
+        }
         public void OnGet()
         {
             string userIdValue;
             if (HttpContext.Request.Cookies.TryGetValue(userIdKey, out userIdValue))
             {
-                UserModel model = new UserService().GetById(Convert.ToInt32(userIdValue));
+                UserModel model = _userService.GetById(Convert.ToInt32(userIdValue));
                 if (model != null)
                 {
                     if (Request.Cookies.TryGetValue(userAuth, out string userAuthValue))

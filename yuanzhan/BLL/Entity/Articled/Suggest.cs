@@ -8,17 +8,17 @@ namespace BLL
 {
     public class Suggest:Article
     {
-        static Suggest()
+        SuggestRepoistory _suggestRepoistory;
+         Suggest(SuggestRepoistory suggestRepoistory)
         {
-
+            _suggestRepoistory = suggestRepoistory;
         }
         //public  MYUser User { get; set; }
 
         public void Publish(Suggest suggest)
         {
-           // User = new UserRepoistory().GetById(id);
-            SuggestRepoistory suggestRepoistory = new SuggestRepoistory();
-            suggestRepoistory.Save(suggest);
+           // User = new UserRepoistory().GetById(id);            
+            _suggestRepoistory.Save(suggest);
         }
     }
 }

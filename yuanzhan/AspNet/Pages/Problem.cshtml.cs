@@ -8,11 +8,17 @@ using UI.Pages.Shared;
 
 namespace AspNet.Pages
 {
-    public class ProblemModel : _LayoutModel
+    public class ProblemModel
     {
-        public override void OnGet()
+        private _LayoutModel _LayoutModel;
+        public ProblemModel(_LayoutModel LayoutModel)
         {
-            base.OnGet();
+
+            _LayoutModel = LayoutModel;
+        }
+        public void OnGet()
+        {
+            _LayoutModel.OnGet();
         }
     }
 }

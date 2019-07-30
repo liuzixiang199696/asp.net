@@ -18,9 +18,9 @@ namespace UI.Pages.Email
         public DateTime dateTime = DateTime.Now;
         private UserService _userService;
         public string AutherId;
-        public ValidateModel()
+        public ValidateModel(UserService userService):base(userService)
         {
-            _userService = new UserService();
+            _userService = userService;
         }
         [BindProperty]
         [Required]

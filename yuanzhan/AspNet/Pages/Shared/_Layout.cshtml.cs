@@ -14,15 +14,18 @@ namespace UI.Pages.Shared
     {
         public const string userIdKey = "userId";
         protected const string userAuth = "PassWord";
-
-
+        private IUserService _service;
+        public _LayoutModel(IUserService service)
+        {
+            _service = service;
+        }
         public virtual void OnGet()
         {
 
             string userIdValue;
             if (HttpContext.Request.Cookies.TryGetValue(userIdKey, out userIdValue))
             {
-                UserModel model = new UserService().GetById(Convert.ToInt32(userIdValue));
+                UserModel model = _service.GetById(Convert.ToInt32(userIdValue));
                 if (model != null)
                 {
                     if (Request.Cookies.TryGetValue(userAuth, out string userAuthValue))

@@ -13,8 +13,12 @@ namespace AspNet.Pages
     public class RegisterModel : PageModel
     {
         public Register Register { get; set; }
+        private RegisterService _registerService;
+        public RegisterModel(RegisterService registerService)
+        {
+            _registerService = registerService;
 
-
+        }
         public void OnGet()
         {
             ViewData["title"] = "注册";
@@ -29,13 +33,13 @@ namespace AspNet.Pages
             {
                 return Page();
             }
-            if (new RegisterService().HasExist(Register.UserName))
+            if (_registerService.HasExist(Register.UserName))
             {
                  ModelState.AddModelError("Register.UserName", "*用户名重复!");
                 return Page();
 
             }
-            new RegisterService().Register(Register.UserName, Register.PassWord);
+            _registerService.Register(Register.UserName, Register.PassWord);
             return RedirectToPage("/Register");
 
 

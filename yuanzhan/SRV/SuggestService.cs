@@ -6,28 +6,25 @@ using BLL.entity;
 using BLL.repoistory;
 using SRV;
 
-public class SuggestService
+public class SuggestService: BaseService
 {
     private SuggestRepoistory _suggestRepoistory;
     private Suggest _suggest;
     private SuggestModel _suggestmodel;
     public List<Suggest> suggests { get; set; }
-    public SuggestService()
+    public SuggestService(SuggestRepoistory suggestRepoistory, SuggestModel suggestmodel, Suggest suggest)
     {
-        _suggestRepoistory = new SuggestRepoistory();
-        _suggestmodel = new SuggestModel();
-        _suggest = new Suggest();
+        _suggestRepoistory = suggestRepoistory;
+        _suggestmodel = suggestmodel;
+        _suggest = suggest;
     }
     public void Publish(string title, string Content, DateTime dateTime, int autherid)
     {
-        Suggest suggest = new Suggest
-        {
-            Title = title,
-            Content = Content,
-            PublishSuggestDateTime = dateTime,
-            Id  =autherid
-        };
-        suggest.Publish(suggest);
+        autherid = _suggest.Id;
+        title = _suggest.Title;
+        Content = _suggest.Content;
+        dateTime = _suggest.PublishSuggestDateTime;
+        _suggest.Publish(_suggest);
 
     }
     public List<Suggest> GetSuggest()

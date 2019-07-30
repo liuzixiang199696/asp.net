@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BLL.repoistory
 {
-    public class SQLDBContext : DbContext
+    public class DbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         //public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
         //{

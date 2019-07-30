@@ -1,18 +1,24 @@
 ﻿using BLL.entity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace BLL.repoistory
 {
     public class Repository<T> where T : Entity
     {
-        public SQLDBContext CurrentContext { get; set; }
+        public DbContext CurrentContext { get; set; }
         public DbSet<T> entities { get; set; }
-        public Repository()
+        public Repository(DbContext context)
         {
-            CurrentContext = new SQLDBContext();
+            CurrentContext = context;
             entities = CurrentContext.Set<T>();
         }
-        public void SetEntities(SQLDBContext context)
+
+        public Repository(Microsoft.EntityFrameworkCore.DbContext context)
+        {
+        }
+
+        public void SetEntities(DbContext context)
         {
             CurrentContext = context;
             entities = CurrentContext.Set<T>();
@@ -27,10 +33,10 @@ namespace BLL.repoistory
         {
             CurrentContext.SaveChanges();
         }
-        //public T Get(int id)
-        //{
-        //    return entities.single(u => u.id == id);
-        //}
+        public T Get(int id)
+        {
+            return entities.Where(u => u.id == id).SingleOrDefault();
+        }
 
     }
 }

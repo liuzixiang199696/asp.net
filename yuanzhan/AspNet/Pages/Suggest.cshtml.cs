@@ -11,18 +11,19 @@ using UI.Pages.Shared;
 
 namespace UI.Pages
 {
-    public class SuggestModel : _LayoutModel
+    public class SuggestModel 
     {
+        private _LayoutModel _LayoutModel;
         private SuggestService _suggestService;
         public List<Suggest> SuggestS { get; set; }
-        public SuggestModel()
+        public SuggestModel(SuggestService suggestService, _LayoutModel LayoutModel)
         {
-            _suggestService = new SuggestService();
-
+            _suggestService = suggestService;
+            _LayoutModel = LayoutModel;
         }
-        public override void OnGet()
+        public  void OnGet()
         {
-            base.OnGet();
+            _LayoutModel.OnGet();
              SuggestS = _suggestService.GetSuggest();
              
 

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BLL.Migrations
 {
-    [DbContext(typeof(SQLDBContext))]
+    [DbContext(typeof(repoistory.DbContext))]
     [Migration("20190727122807_email")]
     partial class email
     {

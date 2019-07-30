@@ -9,12 +9,18 @@ using UI.Pages.Shared;
 
 namespace AspNet.Pages
 {
-    public class IndexModel : _LayoutModel
-    {      
-        public override void OnGet()
+    public class IndexModel
+    {
+        private _LayoutModel _LayoutModel;
+        public IndexModel(_LayoutModel LayoutModel)
         {
-            base.OnGet();
-            
+
+            _LayoutModel = LayoutModel;
+        }
+        public void OnGet()
+        {
+            _LayoutModel.OnGet();
+
         }
     }
 }

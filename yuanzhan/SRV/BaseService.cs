@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SRV
 {
-    class BaseService
+   public class BaseService
     {
         protected static MapperConfiguration autoMapperConfig;
         static BaseService()

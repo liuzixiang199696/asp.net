@@ -7,19 +7,24 @@ using System.Text;
 
 namespace BLL.repoistory
 {
-    public class UserRepoistory:Repository<Entity>
+    public class UserRepoistory:Repository<MYUser>
     {
-        MYUser MYUser = new MYUser();  
+        private EmailRepoistory _EmailRepoistory;
+        public UserRepoistory(DbContext context, EmailRepoistory EmailRepoistory):base(context)
+        {
+            _EmailRepoistory = EmailRepoistory;
+        }
+
         public MYUser Save(MYUser user)
         {
-            entities.Add(user);
-            entities.SaveChanges();
+            CurrentContext.Add(user);
+            CurrentContext.SaveChanges();
             return user;
         }
         public Email Save(Email email)
         {
-            entities.Add(email);
-            entities.SaveChanges();
+            CurrentContext.Add(email);
+            CurrentContext.SaveChanges();
             return email;
         }
 
@@ -35,13 +40,13 @@ namespace BLL.repoistory
 
         public Email GetEmailById(int id)
         {
-            Email email = context.emails.Where(e => e.OwnerId == id).SingleOrDefault();
+            Email email = _EmailRepoistory.entities.Where(e => e.id == id).SingleOrDefault();
             return email;
         }
 
         public MYUser GetById(int id)
         {
-            return context.users.Where(u => u.id == id).SingleOrDefault();
+            return entities.Where(u => u.id == id).SingleOrDefault();
         }
     }
 
