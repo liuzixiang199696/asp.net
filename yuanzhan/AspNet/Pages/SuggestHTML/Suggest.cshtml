@@ -12,7 +12,7 @@
         @{         
             foreach (var item in Model.SuggestS)
             {
-                 @item.Title <br />
+                <a href="/SuggestHTML/Single?id=@item.id"> @item.Title <br /></a>  
                  @item.Content <br />
                  @item.PublishSuggestDateTime <br />
                  

@@ -22,5 +22,12 @@ namespace BLL.repoistory
         {
             return entities.ToList();
         }
+
+        public Suggest GetSuggestSingle(int id)
+        {
+            return entities.Where(s => s.id == id).SingleOrDefault();
+           
+                
+        }
     }   
 }
