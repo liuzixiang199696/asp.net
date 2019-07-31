@@ -29,8 +29,7 @@ public class SuggestService: BaseService
     }
     public List<Suggest> GetSuggest()
     {
-        suggests = _suggestRepoistory.GetSuggest();
-
+        suggests = _suggestRepoistory.GetSuggest();      
         return suggests;
     }
 

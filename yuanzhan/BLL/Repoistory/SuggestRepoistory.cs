@@ -20,7 +20,7 @@ namespace BLL.repoistory
         }
         public List<Suggest> GetSuggest()
         {
-            return entities.ToList();
+            return entities.OrderByDescending(s=>s.id).ToList();
         }
 
         public Suggest GetSuggestSingle(int id)
