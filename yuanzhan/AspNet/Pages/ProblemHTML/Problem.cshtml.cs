@@ -4,21 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SRV;
 using UI.Pages.Shared;
 
 namespace AspNet.Pages
 {
-    public class ProblemModel
+    public class ProblemModel: _LayoutModel
     {
-        private _LayoutModel _LayoutModel;
-        public ProblemModel(_LayoutModel LayoutModel)
+        private IUserService _service;
+        public ProblemModel(IUserService service):base(service)
         {
-
-            _LayoutModel = LayoutModel;
+           
         }
-        public void OnGet()
+        public override void OnGet()
         {
-            _LayoutModel.OnGet();
+            base.OnGet();
         }
     }
 }
