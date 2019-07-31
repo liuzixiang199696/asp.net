@@ -11,10 +11,9 @@ namespace BLL.repoistory
     {
         private EmailRepoistory _EmailRepoistory;
         private UserRepoistory _UserRepoistory;
-        public UserRepoistory(DbContext context, EmailRepoistory EmailRepoistory,UserRepoistory UserRepoistory) :base(context)
+        public UserRepoistory(SQLDbContext context, EmailRepoistory EmailRepoistory) :base(context)
         {
             _EmailRepoistory = EmailRepoistory;
-            _UserRepoistory = UserRepoistory;
         }
         
         public MYUser Save(MYUser user)
@@ -48,7 +47,7 @@ namespace BLL.repoistory
 
         public MYUser GetById(int id)
         {
-            return _UserRepoistory.entities.Where(u => u.id == id).SingleOrDefault();
+            return entities.Where(u => u.id == id).SingleOrDefault();
         }
     }
 

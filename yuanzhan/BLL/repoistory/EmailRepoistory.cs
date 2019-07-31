@@ -10,7 +10,7 @@ namespace BLL.repoistory
 
     public class EmailRepoistory:Repository<Email>
     {
-        public EmailRepoistory(DbContext context):base(context)
+        public EmailRepoistory(SQLDbContext context):base(context)
         {
 
         }

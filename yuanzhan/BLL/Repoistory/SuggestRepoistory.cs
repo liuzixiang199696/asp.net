@@ -7,13 +7,12 @@ using System.Text;
 
 namespace BLL.repoistory
 {
-   public class SuggestRepoistory : Repository<Entity>
+   public class SuggestRepoistory : Repository<Suggest>
     {
-        public SuggestRepoistory(DbContext context):base(context)
+        public SuggestRepoistory(SQLDbContext context) :base(context)
         {
-
         }
-        public Suggest Save(Suggest  suggest)
+        public override Suggest Save(Suggest  suggest)
         {
             CurrentContext.Add(suggest);
             CurrentContext.SaveChanges();
@@ -21,7 +20,7 @@ namespace BLL.repoistory
         }
         public List<Suggest> GetSuggest()
         {
-            return null;
+            return entities.ToList();
         }
     }   
 }

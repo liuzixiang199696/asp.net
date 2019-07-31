@@ -8,20 +8,21 @@ using System.Text;
 
 namespace BLL.repoistory
 {
-    public class DbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class SQLDbContext :DbContext
     {
-        //public SQLDBContext(DbContextOptions<SQLDBContext> options) : base(options)
+        //public SQLDbContext(DbContextOptions<SQLDbContext> options) : base(options)
         //{
 
         //}
-        public static readonly LoggerFactory MyLoggerFactory
-        = new LoggerFactory(new[]
-        {
-              new ConsoleLoggerProvider((_, __) => true, true) }
-        );
-        //public DbSet<Article> Articles { get; set; }
-        //public DbSet<MYUser> users { get; set; }
-        //public DbSet<Email> emails { get; set; }
+        //public static readonly LoggerFactory MyLoggerFactory
+        //= new LoggerFactory(new[]
+        //{
+        //      new ConsoleLoggerProvider((_, __) => true, true) }
+        //);
+        public DbSet<Suggest> Suggests { get; set; }
+        public DbSet<Blog> blogs { get; set; }
+        public DbSet<MYUser> users { get; set; }
+        public DbSet<Email> emails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,7 +39,10 @@ namespace BLL.repoistory
             modelBuilder.Entity<Blog>((options) => { options.Ignore(x => x.Url); });
             modelBuilder.Entity<BlogToKeywords>()
                 .HasKey(bk => new { bk.BlogId, bk.KeywordId });
-           modelBuilder.Entity<Article>().HasDiscriminator(b => b.DiscriminatorType);
+            //modelBuilder.Entity<Article>().HasDiscriminator(b => b.DiscriminatorType);
+            modelBuilder.Entity<Suggest>();
+                //.HasIndex(b => b.id)
+                //.IsUnique();
         }
 
 

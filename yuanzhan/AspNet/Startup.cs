@@ -37,6 +37,7 @@ namespace AspNet
 
             });
 
+            services.AddScoped<BLL.repoistory.SQLDbContext, BLL.repoistory.SQLDbContext>();
             services.AddDIService();
             services.AddDIRepoistory();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

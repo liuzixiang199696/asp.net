@@ -1,4 +1,7 @@
-﻿using BLL.repoistory;
+﻿using BLL;
+using BLL.entity;
+using BLL.entity.Articled;
+using BLL.repoistory;
 using Microsoft.Extensions.DependencyInjection;
 using SRV;
 using System;
@@ -30,6 +33,13 @@ namespace AspNet.Pages
             services.AddScoped<UserRepoistory, UserRepoistory>();
             services.AddScoped<EmailRepoistory, EmailRepoistory>();
             services.AddScoped<SuggestRepoistory, SuggestRepoistory>();
+            services.AddScoped<Suggest, Suggest>();
+            services.AddScoped<Blog, Blog>();
+            services.AddScoped<Keyword, Keyword>();
+            services.AddScoped<Email, Email>();
+            services.AddScoped<MYUser, MYUser>();
+            services.AddScoped<Entity, Entity>();
+
         }
 
     }

@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BLL.Migrations
 {
-    [DbContext(typeof(repoistory.DbContext))]
-    [Migration("20190727122807_email")]
-    partial class email
+    [DbContext(typeof(SQLDbContext))]
+    [Migration("20190731080002_7311545")]
+    partial class _7311545
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace BLL.Migrations
 
             modelBuilder.Entity("BLL.Email", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -35,24 +35,26 @@ namespace BLL.Migrations
 
                     b.Property<string>("ValidationCode");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("emails");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.Blog", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("PublishSuggestDateTime");
+
                     b.Property<string>("Title");
 
-                    b.Property<string>("Url");
+                    b.HasKey("id");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Blog");
+                    b.ToTable("blogs");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -70,20 +72,26 @@ namespace BLL.Migrations
 
             modelBuilder.Entity("BLL.entity.Articled.Keyword", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Content");
+
                     b.Property<string>("Name");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("PublishSuggestDateTime");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("id");
 
                     b.ToTable("Keyword");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.Post", b =>
                 {
-                    b.Property<int>("PostId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -91,9 +99,11 @@ namespace BLL.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<int>("PostId");
+
                     b.Property<string>("Title");
 
-                    b.HasKey("PostId");
+                    b.HasKey("id");
 
                     b.HasIndex("BlogId");
 
@@ -102,48 +112,46 @@ namespace BLL.Migrations
 
             modelBuilder.Entity("BLL.MYUser", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EmailId");
+                    b.Property<int?>("Emailid");
 
-                    b.Property<int?>("InvitedById");
+                    b.Property<int?>("InvitedByid");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("Password");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("EmailId");
+                    b.HasIndex("Emailid");
 
-                    b.HasIndex("InvitedById");
+                    b.HasIndex("InvitedByid");
 
                     b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
+                        .IsUnique();
 
-                    b.ToTable("users");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BLL.Suggest", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AutherId");
+                    b.Property<string>("Content");
 
                     b.Property<DateTime>("PublishSuggestDateTime");
 
-                    b.Property<string>("SuggestContent");
-
                     b.Property<string>("Title");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.ToTable("suggests");
+                    b.ToTable("Suggests");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -171,11 +179,11 @@ namespace BLL.Migrations
                 {
                     b.HasOne("BLL.Email", "Email")
                         .WithMany()
-                        .HasForeignKey("EmailId");
+                        .HasForeignKey("Emailid");
 
                     b.HasOne("BLL.MYUser", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedById");
+                        .HasForeignKey("InvitedByid");
                 });
 #pragma warning restore 612, 618
         }

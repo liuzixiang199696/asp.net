@@ -10,20 +10,18 @@ public class SuggestService: BaseService
 {
     private SuggestRepoistory _suggestRepoistory;
     private Suggest _suggest;
-    private SuggestModel _suggestmodel;
     public List<Suggest> suggests { get; set; }
-    public SuggestService(SuggestRepoistory suggestRepoistory, SuggestModel suggestmodel, Suggest suggest)
+    public SuggestService(SuggestRepoistory suggestRepoistory, Suggest suggest)
     {
         _suggestRepoistory = suggestRepoistory;
-        _suggestmodel = suggestmodel;
         _suggest = suggest;
     }
     public void Publish(string title, string Content, DateTime dateTime, int autherid)
-    {
-        autherid = _suggest.Id;
-        title = _suggest.Title;
-        Content = _suggest.Content;
-        dateTime = _suggest.PublishSuggestDateTime;
+    {      
+        _suggest.Title = title  ;
+        _suggest.Content = Content  ;
+        _suggest.PublishSuggestDateTime = dateTime  ;
+        _suggest.AutherId= autherid;
         _suggest.Publish(_suggest);
 
     }

@@ -14,11 +14,11 @@ namespace DBFactory
             string connectionString =
                 @"Data Source=(localdb)\ProjectsV13;Initial Catalog=17bang;Integrated Security=True;";
 
-            DbContextOptionsBuilder<BLL.repoistory.DbContext> optionsBuilder = new DbContextOptionsBuilder<BLL.repoistory.DbContext>();
+            DbContextOptionsBuilder<BLL.repoistory.SQLDbContext> optionsBuilder = new DbContextOptionsBuilder<BLL.repoistory.SQLDbContext>();
             optionsBuilder
                .UseLoggerFactory(MyLoggerFactory)
                .UseSqlServer(connectionString);
-            DatabaseFacade db = new BLL.repoistory.DbContext().Database;
+            DatabaseFacade db = new SQLDbContext().Database;
             db.EnsureDeleted();      //如果存在数据库，就删除之//db.EnsureCreated();   和Migration有可能冲突，不要混合使用
             db.Migrate();
             RegisterFactory.Create();

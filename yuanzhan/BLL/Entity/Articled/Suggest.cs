@@ -6,10 +6,20 @@ using System.Text;
 
 namespace BLL
 {
-    public class Suggest:Article
+    public class Suggest : Entity
     {
-        SuggestRepoistory _suggestRepoistory;
-         Suggest(SuggestRepoistory suggestRepoistory)
+        public Suggest()
+        {
+                
+        }
+
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime PublishSuggestDateTime { get; set; }
+        public int AutherId { get; set; }
+
+        public SuggestRepoistory _suggestRepoistory;
+        public Suggest(SuggestRepoistory suggestRepoistory)
         {
             _suggestRepoistory = suggestRepoistory;
         }
@@ -17,7 +27,6 @@ namespace BLL
 
         public void Publish(Suggest suggest)
         {
-           // User = new UserRepoistory().GetById(id);            
             _suggestRepoistory.Save(suggest);
         }
     }
