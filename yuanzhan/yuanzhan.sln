@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTest", "NUnitTest\NUni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{DC8BD6C7-CAEA-4A2C-BE10-CE9BC81611CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17bangMVC", "17bangMVC\17bangMVC.csproj", "{69754B2B-465A-4308-9FEA-D4E4CD04D01E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_17bangMVC", "17bangMVC\_17bangMVC.csproj", "{69754B2B-465A-4308-9FEA-D4E4CD04D01E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

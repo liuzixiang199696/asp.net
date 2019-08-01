@@ -1,0 +1,16 @@
+﻿@model  _17bangMVC.Models.Register.IndexModel
+
+@{
+    //ViewBag.Title = "Home Page";
+}
+
+<h1>注册</h1>
+@using (Html.BeginForm())
+{
+    <label>用户名：</label><br />
+    @Html.TextBoxFor(m => m.UserName)<br />
+    @Html.ValidationMessageFor(m=>m.UserName)<br />
+    <label>密码：</label><br />
+    @Html.PasswordFor(p => p.PassWord)<br />
+    <button type="submit">提交</button>
+}
