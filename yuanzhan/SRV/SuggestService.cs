@@ -27,9 +27,9 @@ public class SuggestService: BaseService
         _suggest.Publish(_suggest);
 
     }
-    public List<Suggest> GetSuggest()
+    public List<Suggest> GetSuggest(int pageIndex, int pageSige)
     {
-        suggests = _suggestRepoistory.GetSuggest();      
+        suggests = _suggestRepoistory.GetSuggest(pageIndex,pageSige);      
         return suggests;
     }
 

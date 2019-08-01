@@ -1,8 +1,10 @@
-﻿@page
+﻿@page "{id}"
 @model UI.Pages.SuggestHTML.SingleModel
 @{
     ViewData["Title"] = "意见建议单页";
 }
+
+    <h2>@PageContext.RouteData.Values["id"]</h2>
 
 <h4>@Model.Title</h4>
 <main>

@@ -16,6 +16,8 @@ namespace UI.Pages
         private SuggestService _suggestService;
         public List<Suggest> SuggestS { get; set; }
         private IUserService _service;
+        [BindProperty( SupportsGet =true)]
+        public int PageIndex { get; set; }
         public SuggestModel(SuggestService suggestService, IUserService service) : base(service)
         {
             _suggestService = suggestService;
@@ -24,7 +26,7 @@ namespace UI.Pages
         public override void OnGet()
         {
             base.OnGet();
-            SuggestS = _suggestService.GetSuggest();
+            SuggestS = _suggestService.GetSuggest(PageIndex,2);
 
 
         }

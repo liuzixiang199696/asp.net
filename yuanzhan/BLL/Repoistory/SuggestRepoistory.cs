@@ -18,9 +18,11 @@ namespace BLL.repoistory
             CurrentContext.SaveChanges();
             return suggest;
         }
-        public List<Suggest> GetSuggest()
+        public List<Suggest> GetSuggest(int pageIndex, int pageSige)
         {
-            return entities.OrderByDescending(s=>s.id).ToList();
+            return entities.OrderByDescending(s=>s.id)
+                .Skip((pageIndex-1)*pageSige).Take(pageSige)
+                .ToList();
         }
 
         public Suggest GetSuggestSingle(int id)

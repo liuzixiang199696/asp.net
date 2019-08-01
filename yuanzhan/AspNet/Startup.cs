@@ -36,11 +36,16 @@ namespace AspNet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
 
             });
-
             services.AddScoped<SQLDbContext, SQLDbContext>();
             services.AddDIService();
             services.AddDIRepoistory();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddRazorPagesOptions(
+                   opt => {
+                       opt.Conventions.AddPageRoute("/SuggestHTML/Single", "/SuggestHTML/Single/{id}");
+                       opt.Conventions.AddPageRoute("/SuggestHTML/Suggest", "/SuggestHTML/Suggest/{PageIndex}");
+                   }
+               )
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

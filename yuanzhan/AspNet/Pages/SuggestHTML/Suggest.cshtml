@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{PageIndex}"
 @model UI.Pages.SuggestModel
 
     <h2><span class="glyphicon glyphicon-list-alt"></span>意见建议</h2>
@@ -12,7 +12,7 @@
         @{         
             foreach (var item in Model.SuggestS)
             {
-                <a href="/SuggestHTML/Single?id=@item.id"> @item.Title <br /></a>  
+                <a href="/SuggestHTML/Single/@item.id"> @item.Title <br /></a>  
                  @item.Content <br />
                  @item.PublishSuggestDateTime <br />
                  
