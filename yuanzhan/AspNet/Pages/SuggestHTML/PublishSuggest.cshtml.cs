@@ -30,7 +30,7 @@ namespace UI.Pages
             PublishSuggest.PublishSuggestDateTime = DateTime.Now;
             _suggestService.Publish(PublishSuggest.SuggestTitle, PublishSuggest.SuggestContent, PublishSuggest.PublishSuggestDateTime,
                 Convert.ToInt32(Request.Cookies.TryGetValue("UserId", out PublishSuggest.AutherId)));
-            Response.Redirect("/SuggestHTML/Suggest");
+            Response.Redirect("/SuggestHTML/Suggest/1");
         }
     }
     [BindProperties]

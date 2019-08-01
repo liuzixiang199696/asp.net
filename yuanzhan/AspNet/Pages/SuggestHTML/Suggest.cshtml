@@ -1,22 +1,24 @@
 ﻿@page "{PageIndex}"
 @model UI.Pages.SuggestModel
 
-    <h2><span class="glyphicon glyphicon-list-alt"></span>意见建议</h2>
-    <form method="get">
-        <span class="text-muted" style="margin-left:20px">
-            <span class="glyphicon glyphicon-calendar"></span> <span> 2019年01月12日 23点23分</span>
-        </span><br />
-        <h4 style="margin-left:20px">
-            <span class="glyphicon glyphicon-eye-open"></span><span>title</span>
-        </h4> 
-        @{         
-            foreach (var item in Model.SuggestS)
-            {
-                <a href="/SuggestHTML/Single/@item.id"> @item.Title <br /></a>  
-                 @item.Content <br />
-                 @item.PublishSuggestDateTime <br />
-                 
-            }
-}
-    </form>
+<h2><span class="glyphicon glyphicon-list-alt"></span>意见建议</h2>
+<form method="get">
+    <span class="text-muted" style="margin-left:20px">
+        <span class="glyphicon glyphicon-calendar"></span> <span> 2019年01月12日 23点23分</span>
+    </span><br />
+    <h4 style="margin-left:20px">
+        <span class="glyphicon glyphicon-eye-open"></span><span>title</span>
+    </h4>
+    @{
+        foreach (var item in Model.SuggestS)
+        {
+            <a href="/SuggestHTML/Single/@item.id"> @item.Title <br /></a>
+            @item.Content <br />
+            @item.PublishSuggestDateTime <br />
+
+        }
+    }
+</form>
+    <a class="btn btn-default" href="/SuggestHTML/Suggest/@Model.PageIndexminusOne" role="button">上一页</a>
+    <a class="btn btn-default" href="/SuggestHTML/Suggest/@Model.PageIndexAndOne" role="button">下一页</a>
 
