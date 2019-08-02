@@ -7,21 +7,33 @@ using System.Web.Mvc;
 
 namespace _17bangMVC.Controllers
 {
-    public class RegisterController: Controller
+    public class RegisterController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View();
+            RegisterModel indexModel = new RegisterModel
+            {
+                IsMan = true
+            };
+            ViewBag.id = id;
+            return View(indexModel);
         }
         [HttpPost]
-        public ActionResult Index(IndexModel model)
+        public ActionResult Index(string name, RegisterModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            return View();
+            name = model.UserName;
+            ViewBag.UserName = name;
+            return View(model);
+        }
+        [ChildActionOnly]
+        public PartialViewResult Reminder()
+        {
+            return PartialView();
         }
     }
 }
