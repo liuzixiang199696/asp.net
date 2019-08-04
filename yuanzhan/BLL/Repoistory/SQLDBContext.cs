@@ -23,6 +23,7 @@ namespace BLL.repoistory
         public DbSet<Blog> blogs { get; set; }
         public DbSet<MYUser> users { get; set; }
         public DbSet<Email> emails { get; set; }
+        public DbSet<Message> messages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

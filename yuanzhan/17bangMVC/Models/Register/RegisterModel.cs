@@ -15,6 +15,7 @@ namespace _17bangMVC.Models.Register
         public bool IsMan { get; set; }
         public string description { get; set; }
         public Cities? Incity { get; set; }
+        public string captcha { get; set; }
     }
     public enum Cities
     {

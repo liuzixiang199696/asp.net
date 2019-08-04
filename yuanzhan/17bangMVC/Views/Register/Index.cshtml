@@ -8,30 +8,46 @@
 @using (Html.BeginForm())
 {
 
-<div>
-    <label>姓名：</label> @Html.TextBoxFor(m => m.UserName)
-    @Html.ValidationMessageFor(m => m.UserName)
-</div>
-<div>
-    <label>密码：</label>@Html.PasswordFor(p => p.PassWord)
-</div>
-<div>
-    <label>性别：</label>
-    <label>@Html.RadioButtonFor(m => m.IsMan, true)男</label>
-    <label>@Html.RadioButtonFor(m => m.IsMan, false)女</label>
-    @Html.ValidationMessageFor(m => m.IsMan)
-</div>
-<div>
-    <label>来自：</label>@Html.EnumDropDownListFor(m => m.Incity)
-</div>
-<div>
-    <label>介绍：</label>@Html.TextAreaFor(m => m.description)
-</div>
-<div>
-    <input type="submit" value="提交" />
-    <label>@Html.CheckBoxFor(m => m.RememberMe, true)记住我</label>
-</div>
+    <div>
+        <label>姓名：</label> @Html.TextBoxFor(m => m.UserName)
+        @Html.ValidationMessageFor(m => m.UserName)
+    </div>
+    <div>
+        <label>密码：</label>@Html.PasswordFor(p => p.PassWord)
+    </div>
+    <div>
+        <label>性别：</label>
+        <label>@Html.RadioButtonFor(m => m.IsMan, true)男</label>
+        <label>@Html.RadioButtonFor(m => m.IsMan, false)女</label>
+        @Html.ValidationMessageFor(m => m.IsMan)
+    </div>
+    <div>
+        <label>来自：</label>@Html.EnumDropDownListFor(m => m.Incity)<br />
+    </div>
+    <div>
+        <label>介绍：</label>@Html.TextAreaFor(m => m.description)<br />
+    </div>
+    <div>
+        <br />  <label>验证码：</label><br />
+        @Html.TextBoxFor(m => m.captcha)
+        @Html.ValidationMessageFor(m => m.captcha)
+        <img id="Captcha" src="/Register/Getcaptcha" alt="验证码" />
+        <a href="#" onclick="myfunction()">看不清楚！</a>
+    </div>
+    <div>
+        <input type="submit" value="提交" />
+        <label>@Html.CheckBoxFor(m => m.RememberMe, true)记住我</label>
+    </div>
 
-<h3>username: @ViewBag.UserName</h3>
-<h3>id: @ViewBag.id</h3>
+    <h3>username: @ViewBag.UserName</h3>
+    <h3>id: @ViewBag.id</h3>
 }
+<script>
+    var cap = document.getElementById("Captcha").getAttribute("src");
+    function myfunction() {            
+        var random = Math.random();
+        document.getElementById("Captcha").setAttribute("src", cap + "?version=" + random)       
+    }
+
+
+</script>

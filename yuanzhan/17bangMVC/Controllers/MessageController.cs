@@ -36,7 +36,7 @@ namespace _17bangMVC.Controllers
 
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");  
         }
     }
 }
