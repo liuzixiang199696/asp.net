@@ -1,4 +1,5 @@
-﻿using _17bangMVC.Models.Problem;
+﻿using _17bangMVC.Models;
+using _17bangMVC.Models.Problem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace _17bangMVC.Controllers
         {
             ViewBag.Title = model.Title;
             ViewBag.Body = model.Body;
-            Save(model);
+            Save(model);          
             return RedirectToAction(COUNTPublishProblem);
         }
         public void GetProblemSingle()
@@ -32,7 +33,9 @@ namespace _17bangMVC.Controllers
         }
         public void Save(ProblemModel model)
         {
-
+            SQLDbContext dbContext = new SQLDbContext();
+            dbContext.problems.Add(model);
+            dbContext.SaveChanges();
         }
     }
 }

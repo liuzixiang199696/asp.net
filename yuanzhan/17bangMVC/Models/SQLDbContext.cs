@@ -9,6 +9,10 @@ namespace _17bangMVC.Models
 {
     public class SQLDbContext : DbContext
     {
+        public SQLDbContext():base("name=17bangMVC")
+        {
+
+        }
         public DbSet<ProblemModel> problems { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
