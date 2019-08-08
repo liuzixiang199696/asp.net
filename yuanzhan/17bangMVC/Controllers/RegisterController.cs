@@ -58,7 +58,7 @@ namespace _17bangMVC.Controllers
             }
             if (model.captcha!=Session[CAPTCHA].ToString())
             {
-                ModelState.AddModelError("captcha", "验证码输入错误！");
+                ModelState.AddModelError(CAPTCHA, "验证码输入错误！");
                 return View(model);
             }
             name = model.UserName;

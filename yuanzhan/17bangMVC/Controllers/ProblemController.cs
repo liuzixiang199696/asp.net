@@ -9,9 +9,10 @@ namespace _17bangMVC.Controllers
 {
     public class ProblemController: Controller
     {
+        public string COUNTPublishProblem = "PublishProblem";
         public ActionResult PublishProblem()
         {
-            return View("PublishProblem");
+            return View(COUNTPublishProblem);
         }
         [HttpPost]
         public ActionResult PublishProblem(ProblemModel model)
@@ -19,7 +20,7 @@ namespace _17bangMVC.Controllers
             ViewBag.Title = model.Title;
             ViewBag.Body = model.Body;
             Save(model);
-            return RedirectToAction("PublishProblem");
+            return RedirectToAction(COUNTPublishProblem);
         }
         public void GetProblemSingle()
         {
