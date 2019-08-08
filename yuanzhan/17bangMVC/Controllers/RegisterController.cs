@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,8 +17,10 @@ namespace _17bangMVC.Controllers
         public const string CAPTCHA = "captcha";
 
         [HttpGet]
+        //[OutputCache(Duration =100,VaryByParam ="id")]
         public ActionResult Index(int? id)
         {
+            Thread.Sleep(1000);
             RegisterModel indexModel = new RegisterModel
             {
                 IsMan = true
@@ -63,6 +66,7 @@ namespace _17bangMVC.Controllers
             return View(model);
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 30)]
         public PartialViewResult Reminder()
         {
             return PartialView();

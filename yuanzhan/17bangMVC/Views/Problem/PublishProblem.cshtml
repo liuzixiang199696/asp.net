@@ -1,0 +1,16 @@
+﻿@model  _17bangMVC.Models.Problem.ProblemModel
+
+
+<h1>发布求助</h1>
+@using (Html.BeginForm())
+{
+    <label>标题</label><br />
+    @Html.TextBoxFor(m => m.Title,new { style="width:400px;height:50px" })
+    @Html.ValidationMessageFor(m => m.Title)<br />
+    <label>正文</label><br />
+    @Html.TextBoxFor(m=>m.Body,new { style="width:400px;height:400px" })<br />   
+    @Html.ValidationMessageFor(m=>m.Body)
+<button type="submit"style="width:200px;height:100px">提交</button>
+
+}
+

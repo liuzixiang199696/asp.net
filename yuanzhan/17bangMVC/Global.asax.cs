@@ -1,3 +1,4 @@
+using _17bangMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace _17bangMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            using (SQLDbContext context = new SQLDbContext()) { };
         }
     }
 }
