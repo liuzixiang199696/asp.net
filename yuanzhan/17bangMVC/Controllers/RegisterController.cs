@@ -1,4 +1,5 @@
-﻿using _17bangMVC.Models.Register;
+﻿using _17bangMVC.Models;
+using _17bangMVC.Models.Register;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -63,6 +64,8 @@ namespace _17bangMVC.Controllers
             }
             name = model.UserName;
             ViewBag.UserName = name;
+            model.Money = 10;
+            Save(model);
             return View(model);
         }
         [ChildActionOnly]
@@ -70,6 +73,12 @@ namespace _17bangMVC.Controllers
         public PartialViewResult Reminder()
         {
             return PartialView();
+        }
+        public void Save(RegisterModel model)
+        {
+            SQLDbContext dbContext = new SQLDbContext();
+            dbContext.Registers.Add(model);
+            dbContext.SaveChanges();
         }
 
     }

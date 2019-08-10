@@ -13,24 +13,7 @@ namespace yuanzhan
     {
         static void Main(string[] args)
         {
-            //var input = Console.ReadLine();
-
-            //var type = typeof(studect);
-            //var kj = type.GetProperty("kj");
-            //var a = new studect();
-            //kj.SetValue(a, "asd", null);
-            //Console.WriteLine(a.kj);
-            //var function = type.GetMethod(input);
-            //function.Invoke(a,null);
-            //switch (input.ToLower())
-            //{
-            //    case "a": break;
-            //    case "b": break;
-            //    case "c": break;
-
-            //    default:
-            //        break;
-            //}
+            
 
 
         }

@@ -10,10 +10,11 @@ namespace _17bangMVC.Controllers
 {
     public class ProblemController: Controller
     {
-        public string COUNTPublishProblem = "PublishProblem";
+        private SQLDbContext SQLDbContext;
+        public const string ConstPublishProblem = "PublishProblem";
         public ActionResult PublishProblem()
         {
-            return View(COUNTPublishProblem);
+            return View(ConstPublishProblem);
         }
         [HttpPost]
         public ActionResult PublishProblem(ProblemModel model)
@@ -21,7 +22,7 @@ namespace _17bangMVC.Controllers
             ViewBag.Title = model.Title;
             ViewBag.Body = model.Body;
             Save(model);          
-            return RedirectToAction(COUNTPublishProblem);
+            return RedirectToAction(ConstPublishProblem);
         }
         public void GetProblemSingle()
         {
@@ -34,7 +35,7 @@ namespace _17bangMVC.Controllers
         public void Save(ProblemModel model)
         {
             SQLDbContext dbContext = new SQLDbContext();
-            dbContext.problems.Add(model);
+            dbContext.Problems.Add(model);
             dbContext.SaveChanges();
         }
     }

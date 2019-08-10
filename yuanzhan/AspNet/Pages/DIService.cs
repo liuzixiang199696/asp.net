@@ -25,6 +25,8 @@ namespace AspNet.Pages
             services.AddScoped<UserModel, UserModel>();
             services.AddScoped<RegisterService, RegisterService>();
             services.AddScoped<BaseService, BaseService>();
+            services.AddScoped<ArticleService, ArticleService>();
+            services.AddScoped<ArticleModel, ArticleModel>();
 
 
         }
@@ -39,6 +41,8 @@ namespace AspNet.Pages
             services.AddScoped<Email, Email>();
             services.AddScoped<MYUser, MYUser>();
             services.AddScoped<Entity, Entity>();
+            services.AddScoped<Article, Article>();
+            services.AddScoped<ArticleRepoistory, ArticleRepoistory>();
 
         }
 

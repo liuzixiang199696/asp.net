@@ -1,4 +1,5 @@
 ﻿using _17bangMVC.Models.Problem;
+using _17bangMVC.Models.Register;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,14 +10,16 @@ namespace _17bangMVC.Models
 {
     public class SQLDbContext : DbContext
     {
-        public SQLDbContext():base("name=17bangMVC")
+        public SQLDbContext() : base("name=17bangMVC")
         {
-
+            //Database.SetInitializer<SQLDbContext>(null);
         }
-        public DbSet<ProblemModel> problems { get; set; }
+        public DbSet<ProblemModel> Problems { get; set; }
+        public DbSet<RegisterModel> Registers { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProblemModel>(); 
+            modelBuilder.Entity<ProblemModel>();
+            modelBuilder.Entity<RegisterModel>().Ignore(m=>m.captcha);
         }
     }
 }

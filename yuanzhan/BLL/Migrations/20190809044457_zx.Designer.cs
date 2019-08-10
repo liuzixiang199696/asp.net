@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BLL.Migrations
 {
     [DbContext(typeof(SQLDbContext))]
-    [Migration("20190731080002_7311545")]
-    partial class _7311545
+    [Migration("20190809044457_zx")]
+    partial class zx
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,25 @@ namespace BLL.Migrations
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BLL.Article", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<string>("DiscriminatorType");
+
+                    b.Property<DateTime>("PublishSuggestDateTime");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Articles");
+                });
 
             modelBuilder.Entity("BLL.Email", b =>
                 {
@@ -37,7 +56,70 @@ namespace BLL.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("emails");
+                    b.ToTable("Emails");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.Article", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AutherNameid");
+
+                    b.Property<string>("Body");
+
+                    b.Property<DateTime>("PublishDateTime");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("AutherNameid");
+
+                    b.ToTable("Article");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.Article+ArticlePost", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Articleid");
+
+                    b.Property<int>("BlogId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("PostId");
+
+                    b.Property<int?>("PostUserNameid");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Articleid");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("PostUserNameid");
+
+                    b.ToTable("ArticlePost");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.ArticleToKeywords", b =>
+                {
+                    b.Property<int>("ArticleId");
+
+                    b.Property<int>("KeywordId");
+
+                    b.HasKey("ArticleId", "KeywordId");
+
+                    b.HasIndex("KeywordId");
+
+                    b.ToTable("ArticleToKeywords");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.Blog", b =>
@@ -54,7 +136,28 @@ namespace BLL.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("blogs");
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.BlogPost", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("PostId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogPost");
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -89,25 +192,21 @@ namespace BLL.Migrations
                     b.ToTable("Keyword");
                 });
 
-            modelBuilder.Entity("BLL.entity.Articled.Post", b =>
+            modelBuilder.Entity("BLL.entity.Articled.Message", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogId");
+                    b.Property<string>("Context");
 
-                    b.Property<string>("Content");
+                    b.Property<DateTime>("PublishMessageTime");
 
-                    b.Property<int>("PostId");
+                    b.Property<int>("UserId");
 
-                    b.Property<string>("Title");
+                    b.HasKey("Id");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("Post");
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("BLL.MYUser", b =>
@@ -143,6 +242,8 @@ namespace BLL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AutherId");
+
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("PublishSuggestDateTime");
@@ -152,6 +253,50 @@ namespace BLL.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Suggests");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.Article", b =>
+                {
+                    b.HasOne("BLL.MYUser", "AutherName")
+                        .WithMany()
+                        .HasForeignKey("AutherNameid");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.Article+ArticlePost", b =>
+                {
+                    b.HasOne("BLL.entity.Articled.Article")
+                        .WithMany("Posts")
+                        .HasForeignKey("Articleid");
+
+                    b.HasOne("BLL.entity.Articled.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BLL.MYUser", "PostUserName")
+                        .WithMany()
+                        .HasForeignKey("PostUserNameid");
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.ArticleToKeywords", b =>
+                {
+                    b.HasOne("BLL.entity.Articled.Article", "Article")
+                        .WithMany("Keywords")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BLL.entity.Articled.Keyword", "Keyword")
+                        .WithMany("Articles")
+                        .HasForeignKey("KeywordId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BLL.entity.Articled.BlogPost", b =>
+                {
+                    b.HasOne("BLL.entity.Articled.Blog", "Blog")
+                        .WithMany("Posts")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BLL.entity.Articled.BlogToKeywords", b =>
@@ -164,14 +309,6 @@ namespace BLL.Migrations
                     b.HasOne("BLL.entity.Articled.Keyword", "Keyword")
                         .WithMany("Blogs")
                         .HasForeignKey("KeywordId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BLL.entity.Articled.Post", b =>
-                {
-                    b.HasOne("BLL.entity.Articled.Blog", "Blog")
-                        .WithMany("Posts")
-                        .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

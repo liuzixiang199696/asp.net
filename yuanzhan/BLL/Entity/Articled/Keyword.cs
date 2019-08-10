@@ -12,5 +12,7 @@ namespace BLL.entity.Articled
 
         //注意：不是IList<Blog>
         public IList<BlogToKeywords> Blogs { get; set; }
+
+        public IList<ArticleToKeywords> Articles { get; set; }
     }
 }

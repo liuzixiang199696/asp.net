@@ -8,6 +8,7 @@ namespace _17bangMVC.Models.Register
 {
     public class RegisterModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage ="*用户名不能为空！")]
         public string UserName { get; set; }
         public string PassWord{ get; set; }
@@ -16,6 +17,7 @@ namespace _17bangMVC.Models.Register
         public string description { get; set; }
         public Cities? Incity { get; set; }
         public string captcha { get; set; }
+        public int Money  { get; set; }
     }
     public enum Cities
     {

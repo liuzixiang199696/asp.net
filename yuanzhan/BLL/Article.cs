@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL
 {
-  public  class Article: Entity
+  public  class Articles: Entity
     {
         public string Title { get; set; }
         public string Content { get; set; }
