@@ -2,6 +2,7 @@
 using _17bangMVC.Models.Register;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -10,12 +11,15 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace _17bangMVC.Controllers
 {
     public class RegisterController : Controller
     {
         public const string CAPTCHA = "captcha";
+        public DbSet<RegisterModel> Entities { get; set; }
+        public SQLDbContext db { get; set; } = new SQLDbContext();
 
         [HttpGet]
         //[OutputCache(Duration =100,VaryByParam ="id")]
@@ -80,6 +84,18 @@ namespace _17bangMVC.Controllers
             dbContext.Registers.Add(model);
             dbContext.SaveChanges();
         }
+        public JsonResult DuplicateUsername(string UserName)
+        {
+            return Json(UserName !=db.Registers.Where(u => u.UserName == UserName).SingleOrDefault().UserName,  
+                JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ViewResult Icon(HttpPostedFileWrapper icon)
+        {
+             string path= Path.GetFileName(icon.FileName);
+            icon.SaveAs(Path.Combine(Server.MapPath("~/Image/"), path));
+            return View();
 
+        }
     }
 }

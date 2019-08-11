@@ -5,6 +5,10 @@
 }
 
     <h1>注册,@DateTime.Now</h1>
+    <form action="/Register/Icon" method="post" enctype="multipart/form-data">
+        <input type="file" name="icon" accept="image/*" />
+        <button type="submit">提交图片</button>
+    </form>
 @using (Html.BeginForm())
 {
     @Html.Action("Reminder", "Register")

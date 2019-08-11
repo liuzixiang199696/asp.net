@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace _17bangMVC.Models.Register
 {
@@ -10,6 +11,7 @@ namespace _17bangMVC.Models.Register
     {
         public int Id { get; set; }
         [Required(ErrorMessage ="*用户名不能为空！")]
+        [Remote("DuplicateUsername", "Register", ErrorMessage ="用户名重复！", HttpMethod = "GET")]
         public string UserName { get; set; }
         public string PassWord{ get; set; }
         public bool RememberMe { get; set; }

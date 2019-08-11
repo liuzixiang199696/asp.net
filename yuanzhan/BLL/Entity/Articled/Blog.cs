@@ -11,11 +11,11 @@ namespace BLL.entity.Articled
         public string Content { get; set; }
         public DateTime PublishSuggestDateTime { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public List<BlogPost> Posts { get; set; }
         public IList<BlogToKeywords> Keywords { get; set; }
     }
 
-    public class Post:Entity
+    public class BlogPost:Entity
     {
         public int PostId { get; set; }
         public string Title { get; set; }
