@@ -86,7 +86,7 @@ namespace _17bangMVC.Controllers
         }
         public JsonResult DuplicateUsername(string UserName)
         {
-            return Json(UserName !=db.Registers.Where(u => u.UserName == UserName).SingleOrDefault().UserName,  
+            return Json(db.Registers.Where(u => u.UserName == UserName).SingleOrDefault()==null,  
                 JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
