@@ -10,7 +10,6 @@ namespace _17bangMVC.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "_17bangMVC.Models.SQLDbContext";
         }
 
         protected override void Seed(_17bangMVC.Models.SQLDbContext context)

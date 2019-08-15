@@ -194,17 +194,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908101138389_InitialCreate.cs" />
-    <Compile Include="Migrations\201908101138389_InitialCreate.Designer.cs">
-      <DependentUpon>201908101138389_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908101201577_zx.cs" />
-    <Compile Include="Migrations\201908101201577_zx.Designer.cs">
-      <DependentUpon>201908101201577_zx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908101253474_z1.cs" />
-    <Compile Include="Migrations\201908101253474_z1.Designer.cs">
-      <DependentUpon>201908101253474_z1.cs</DependentUpon>
+    <Compile Include="Migrations\201908150355547_zx.cs" />
+    <Compile Include="Migrations\201908150355547_zx.Designer.cs">
+      <DependentUpon>201908150355547_zx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Message\MessageModel.cs" />
@@ -218,8 +210,53 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\chocolat.css" />
+    <Content Include="css\fontawesome-all.min.css" />
+    <Content Include="css\hover.css" />
+    <Content Include="css\mislider-custom.css" />
+    <Content Include="css\mislider.css" />
+    <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg1.jpg" />
+    <Content Include="images\close.png" />
+    <Content Include="images\g1.jpg" />
+    <Content Include="images\g2.jpg" />
+    <Content Include="images\g3.jpg" />
+    <Content Include="images\g4.jpg" />
+    <Content Include="images\g5.jpg" />
+    <Content Include="images\g6.jpg" />
+    <Content Include="images\g7.jpg" />
+    <Content Include="images\g8.jpg" />
+    <Content Include="images\g9.jpg" />
+    <Content Include="images\left.png" />
+    <Content Include="images\move-top.png" />
+    <Content Include="images\p1.jpg" />
+    <Content Include="images\p2.jpg" />
+    <Content Include="images\p3.jpg" />
+    <Content Include="images\p4.jpg" />
+    <Content Include="images\right.png" />
+    <Content Include="images\t1.jpg" />
+    <Content Include="images\t2.jpg" />
+    <Content Include="images\t3.jpg" />
+    <Content Include="images\te1.jpg" />
+    <Content Include="images\te2.jpg" />
+    <Content Include="images\te3.jpg" />
+    <Content Include="images\te4.jpg" />
+    <Content Include="images\te5.jpg" />
+    <Content Include="images\te6.jpg" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\counter.js" />
+    <Content Include="js\easing.js" />
+    <Content Include="js\jquery-2.2.3.min.js" />
+    <Content Include="js\jquery.chocolat.js" />
+    <Content Include="js\mislider.js" />
+    <Content Include="js\move-top.js" />
+    <Content Include="js\SmoothScroll.min.js" />
+    <Content Include="webfonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -230,6 +267,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -257,16 +296,26 @@
     <Content Include="Views\Problem\ProblemList.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\Problem\Posts.cshtml" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="webfonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="webfonts\glyphicons-halflings-regular.woff" />
+    <Content Include="webfonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="webfonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -276,14 +325,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908101138389_InitialCreate.resx">
-      <DependentUpon>201908101138389_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908101201577_zx.resx">
-      <DependentUpon>201908101201577_zx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908101253474_z1.resx">
-      <DependentUpon>201908101253474_z1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908150355547_zx.resx">
+      <DependentUpon>201908150355547_zx.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

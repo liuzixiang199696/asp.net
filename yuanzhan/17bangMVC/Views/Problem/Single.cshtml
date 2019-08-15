@@ -1,17 +1,35 @@
-﻿@{
-    Layout = null;
+﻿@model  _17bangMVC.Models.Problem.ProblemModel
+
+
+@using (Html.BeginForm("Single", "Problem"))
+{
+    <label>标题：</label> @Html.Raw(Model.Title)<br />
+    <label>内容：</label> @Html.Raw(Model.Body)<br />
+    foreach (var item in Model.Posts)
+    {
+        <p>评论：@item.Body</p>
+    }
+    <div id="comments"></div>
+
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+@using (Ajax.BeginForm("Posts", "Problem",
+    new { id = ViewContext.RouteData.Values["id"] },
+    new AjaxOptions
+    {
+        Confirm = "确认提交",
+        AllowCache = false,
+        HttpMethod = "POST",
+        UpdateTargetId = "comments",
+        InsertionMode = InsertionMode.InsertAfter,
+        LoadingElementDuration = 3,
+        LoadingElementId = "wait",
+//OnBegin = "alert('开始Ajax提交了')",
+//OnSuccess = "alert('提交成功')",
+//OnFailure = "alert('提交失败')",
+//OnComplete = "alert('提交完成，无论成功还是失败')",
+}))
+{
+    @Html.TextAreaFor(m => m.NewPost)
+    <button type="submit">提交</button>
+}

@@ -1,17 +1,20 @@
-﻿@{
-    Layout = null;
+﻿@using _17bangMVC.Models.Problem
+@model   List<ProblemModel>
+
+<h1>求助列表</h1>
+@{
+    if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <label>@item.Title</label><br />
+            <label>@item.Body</label>
+
+        }
+    }
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+
+
+

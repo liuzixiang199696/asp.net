@@ -18,7 +18,7 @@ namespace _17bangMVC.Models
         public DbSet<RegisterModel> Registers { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProblemModel>();
+            modelBuilder.Entity<ProblemModel>().Ignore(m => m.NewPost);
             modelBuilder.Entity<RegisterModel>().Ignore(m=>m.captcha);
         }
     }
