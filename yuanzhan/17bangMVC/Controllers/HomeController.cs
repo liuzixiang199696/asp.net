@@ -10,6 +10,12 @@ namespace _17bangMVC.Controllers
     {
         public ActionResult Index()
         {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string content)
+        {
             return View();
         }
 

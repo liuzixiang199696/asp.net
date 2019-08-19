@@ -1,6 +1,7 @@
 ﻿@model  _17bangMVC.Models.Problem.ProblemModel
 
 
+
 @using (Html.BeginForm("Single", "Problem"))
 {
     <label>标题：</label> @Html.Raw(Model.Title)<br />
@@ -9,10 +10,31 @@
     {
         <p>评论：@item.Body</p>
     }
-    <div id="comments"></div>
-
 }
-
+@*<form method="post">
+        <div id="div1">
+            <input type="text" name="name" value="用户名" />
+            <input type="text" name="password" value="密码" />
+            <input type="button" onclick="showOther1()" value="div2" />
+        </div>
+        <div id="div2" hidden>
+            <input type="text" name="man" value="邀请人" />
+            <input type="text" name="name" value="用户名" />
+            <input type="text" name="password" value="密码" />
+            <input type="button" onclick="showOther2()" value="div1" />
+        </div>
+        <button type="submit">注册！</button>
+    </form>
+    <script>
+        function showOther1() {
+            $("#div1").hide();
+            $("#div2").show();
+        }
+        function showOther2() {
+            $("#div2").hide();
+            $("#div1").show();
+        }
+    </script>*@
 @using (Ajax.BeginForm("Posts", "Problem",
     new { id = ViewContext.RouteData.Values["id"] },
     new AjaxOptions

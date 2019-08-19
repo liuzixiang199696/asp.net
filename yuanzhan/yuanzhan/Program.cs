@@ -8,45 +8,41 @@ using System.Linq;
 using System.Threading.Tasks;
 using yuanzhan.Xml;
 namespace yuanzhan
-{
+{ 
     class Program
     {
         static void Main(string[] args)
         {
-            
-
-
+            studect studect = new studect();
+            string lzx = "lzx";
+            Console.WriteLine(studect.ninchilema(lzx)); 
         }
-        public static async void Getup()
-        {
-            Console.WriteLine($"before await-1 with thread {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"before await-2 with thread {Thread.CurrentThread.ManagedThreadId}");
-            //await 之前的代码，在主线程上运行
-
-            //await 开始异步执行，方法从这里开始返回调用者
-            await Task.Run(() =>
-            {
-                Console.WriteLine($"in await with thread {Thread.CurrentThread.ManagedThreadId}");
-            });
-
-            //直到await中内容执行完毕，才开始（但不是立即或同步的）执行await之后的代码
-            Console.WriteLine($"after await-3 with thread {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"after await-4 with thread {Thread.CurrentThread.ManagedThreadId}");
-        }
+      
 
     }
 
-
+    // class student 学生类，  public 公开的，private, 私有的 ，修饰符  static , 静态的 ,eat方法名，
+    // () 参数  void, 返回值 ， int string ,bool,   return返回
     class studect
     {
-        public void sj(int a)
+        public void eat(string zhongcan)
         {
-            Console.WriteLine(a);
+            Console.WriteLine("我吃的是"+zhongcan);
         }
-        public String kj { get; set; }
-        public void a() { Console.WriteLine("a"); }
-        public void b() { Console.WriteLine("b"); }
-        public void c() { Console.WriteLine("c"); }
+        public string ninchilema(string student)
+        {
+            if (student=="lzx")
+            {
+                string q = "吃了";
+                return q;
+            }
+            else
+            {
+                string b = "没吃";
+                return b;
+            }
+            
+        }
 
     }
     //interface Ischool

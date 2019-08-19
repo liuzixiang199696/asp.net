@@ -27,6 +27,7 @@ namespace _17bangMVC.Controllers
             Save(model);
             return Redirect("/Problem/Single/" + model.Id);
         }
+        [ValidateInput(false)]
         public ActionResult Single(int id)
         {
             ProblemModel problem = get(id);
