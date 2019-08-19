@@ -187,6 +187,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProblemController.cs" />
@@ -199,6 +200,7 @@
       <DependentUpon>201908150355547_zx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Article\ArticleModel.cs" />
     <Compile Include="Models\Message\MessageModel.cs" />
     <Compile Include="Models\Problem\ProblemModel.cs" />
     <Compile Include="Models\Register\RegisterModel.cs" />
@@ -536,6 +538,9 @@
     <Content Include="utf8-jsp\third-party\video-js\font\vjs.eot" />
     <Content Include="utf8-jsp\third-party\video-js\font\vjs.ttf" />
     <Content Include="utf8-jsp\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\single.cshtml" />
+    <Content Include="Views\Article\Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
